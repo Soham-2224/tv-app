@@ -1,5 +1,3 @@
-import { LogoutBtn } from "@/components/auth/LogoutButton"
-
 export default function Home() {
     return (
         <>
