@@ -3,6 +3,8 @@
 @tailwind utilities;
  
 
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -24,7 +26,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 72.2% 50.6%;
-    --radius: 1rem;
+    --radius: 0.75rem;
   }
  
   .dark {
@@ -50,6 +52,8 @@
   }
 }
 
+
+
  
 @layer base {
   * {
@@ -57,5 +61,14 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-4 md:px-8 lg:px-10 xl:px-20 2xl:px-24
+  }
+  .max-section-width {
+    @apply max-w-[105rem] mx-auto
   }
 }

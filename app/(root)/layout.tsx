@@ -22,22 +22,22 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}>
+            <body className={cn("h-screen bg-background font-sans antialiased", inter.variable)}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <Header /> 
-                    <div className="flex">
-                        <div className="flex-[0.25]">
-                            <LeftSidebar />
-                        </div>
+                    <div className=" h-full flex flex-col">
+                    <Header />
+                    <div className="flex-1 flex">
+                        <LeftSidebar />
                         <div className="flex-1">{children}</div>
                         <div className="hidden xl:block flex-[0.25]">
                             <RightSidebar />
                         </div>
+                    </div>
                     </div>
                 </ThemeProvider>
             </body>
