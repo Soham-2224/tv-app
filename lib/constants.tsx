@@ -5,7 +5,7 @@ export const NAV_LINKS = [
         icon: (isActivb: boolean) => (
             <HomeIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-primary-foreground"
+                    isActivb ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -16,7 +16,7 @@ export const NAV_LINKS = [
         icon: (isActivb: boolean) => (
             <CompassIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-primary-foreground"
+                    isActivb ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -27,7 +27,7 @@ export const NAV_LINKS = [
         icon: (isActivb: boolean) => (
             <Clock10Icon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-primary-foreground"
+                    isActivb ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -38,7 +38,7 @@ export const NAV_LINKS = [
         icon: (isActivb: boolean) => (
             <HeartIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-primary-foreground"
+                    isActivb ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
