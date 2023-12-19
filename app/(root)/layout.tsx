@@ -30,14 +30,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     disableTransitionOnChange
                 >
                     <div className=" h-full flex flex-col">
-                    <Header />
-                    <div className="flex-1 flex">
-                        <LeftSidebar />
-                        <div className="flex-1">{children}</div>
-                        <div className="hidden xl:block flex-[0.25]">
+                        <Header />
+                        <div className="flex-1 flex">
+                            <LeftSidebar />
+                            <div className="flex-1">{children}</div>
                             <RightSidebar />
                         </div>
-                    </div>
                     </div>
                 </ThemeProvider>
             </body>

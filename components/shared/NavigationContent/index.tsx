@@ -35,7 +35,7 @@ const NavigationContent = () => {
     }
 
     return (
-        <div className="h-full flex flex-col justify-between items-center">
+        <div className="h-full w-full flex flex-col justify-between items-center">
             <nav className=" w-full flex flex-col gap-2">
                 {getNavLinks()}
                 <Separator />
