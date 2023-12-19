@@ -1,23 +1,24 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 import { useRouter } from "next/navigation"
-import { Hanko } from "@teamhanko/hanko-elements"
+
+// --components--
 import CustomDialog from "@/components/ui/customDialog"
 import { Button } from "@/components/ui/button"
+
+// --icons--
 import { LogOutIcon } from "lucide-react"
 
-const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL
+// --auth--
+import { HankoContext } from "@/components/auth/HankoProvider"
 
 export function LogoutBtn() {
     const router = useRouter()
-    const [hanko, setHanko] = useState<Hanko>()
-
-    useEffect(() => {
-        import("@teamhanko/hanko-elements").then(({ Hanko }) => setHanko(new Hanko(hankoApi ?? "")))
-    }, [])
+    const hanko = useContext(HankoContext)
 
     const logout = async () => {
+        if (!hanko) return
         try {
             await hanko?.user.logout()
             router.push("/login")
@@ -28,7 +29,7 @@ export function LogoutBtn() {
         }
     }
 
-    return (
+    return hanko ? (
         <CustomDialog
             asChild={true}
             triggerClassNames="rounded-md"
@@ -50,5 +51,5 @@ export function LogoutBtn() {
                 Log out
             </Button>
         </CustomDialog>
-    )
+    ) : null
 }

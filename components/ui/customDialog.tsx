@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 
-// -- shadcn --
+// --shadcn--
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import {
     AlertDialog,
@@ -15,10 +15,10 @@ import {
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog"
 
-// -- utils
+// --utils--
 import { cn } from "@/lib/utils"
 
-// -- icons
+// --icons--
 import { ExpandIcon } from "lucide-react"
 
 /**
