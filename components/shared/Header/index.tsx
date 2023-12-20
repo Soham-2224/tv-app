@@ -24,10 +24,10 @@ const Header = () => {
                         <NavLinks />
                     </div>
                 </div>
-                <div className=" flex gap-4">
+                <div className=" flex-1 justify-end flex gap-4">
                     <Input
                         placeholder="Search movies, tv shows..."
-                        className=" hidden md:inline-flex max-w-lg lg:max-w-xl"
+                        className=" hidden md:inline-flex max-w-xs lg:hover:max-w-xl lg:focus:max-w-xl transition-all duration-100 ease-linear"
                     />
                     <div className="flex gap-2">
                         <ModeToggle />
