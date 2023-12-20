@@ -12,22 +12,26 @@ import { HankoProvider } from "@/components/auth/HankoProvider"
 import { LogoutBtn } from "./LogoutBtn"
 
 // --constants--
-import { NAV_LINKS } from "@/lib/constants"
+import { SIDEBAR_LINKS } from "@/lib/constants"
 
 const NavigationContent = () => {
     const pathName = usePathname()
+    const getBasePath = (link : string) => {
+        return pathName.includes("movies") ? `/movies${link}` : `/tv${link}`
+    }
 
     const getNavLinks = () => {
-        return NAV_LINKS.map((obj) => (
+        return SIDEBAR_LINKS.map((obj) => (
             <Link
                 key={obj.title}
-                href={obj.link}
+                // href={`${basePath}${obj.link}`}
+                href={getBasePath(obj.link)}
             >
                 <Button
                     className=" w-full justify-start"
-                    variant={pathName === obj.link ? "secondary" : "ghost"}
+                    variant={pathName === getBasePath(obj.link) ? "secondary" : "ghost"}
                 >
-                    {obj.icon(pathName === obj.link)}
+                    {obj.icon(pathName === getBasePath(obj.link))}
                     <h3 className="xl:text-base">{obj.title}</h3>
                 </Button>
             </Link>

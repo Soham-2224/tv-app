@@ -1,22 +1,34 @@
+import React from "react"
 import { Clock10Icon, CompassIcon, HeartIcon, HomeIcon } from "lucide-react"
 
-export const NAV_LINKS = [
+export const NAV_LINKS : ({name: string, link: string})[] = [
     {
-        icon: (isActivb: boolean) => (
+        name: "Movies",
+        link: "/movies"
+    },
+    {
+        name: "TV Shows",
+        link: "/tv"
+    },
+]
+
+export const SIDEBAR_LINKS : ({icon: (value: boolean) => React.ReactNode, link: string, title: string})[] = [
+    {
+        icon: (isActive) => (
             <HomeIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-foreground"
+                    isActive ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
-        link: "/",
+        link: "",
         title: "Home"
     },
     {
-        icon: (isActivb: boolean) => (
+        icon: (isActive) => (
             <CompassIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-foreground"
+                    isActive ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -24,10 +36,10 @@ export const NAV_LINKS = [
         title: "Discover"
     },
     {
-        icon: (isActivb: boolean) => (
+        icon: (isActive) => (
             <Clock10Icon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-foreground"
+                    isActive ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -35,10 +47,10 @@ export const NAV_LINKS = [
         title: "Comming soon"
     },
     {
-        icon: (isActivb: boolean) => (
+        icon: (isActive) => (
             <HeartIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActivb ? " text-primary" : " text-foreground"
+                    isActive ? " text-primary" : " text-foreground"
                 }`}
             />
         ),
@@ -47,7 +59,7 @@ export const NAV_LINKS = [
     }
 ]
 
-export const GENRES = [
+export const GENRES : ({id: number, name: string})[] = [
     {
         id: 28,
         name: "Action"
