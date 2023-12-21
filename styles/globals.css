@@ -89,6 +89,24 @@ html {
   --_slide-size: 80%;
   --_slide-height: 22rem;
 }
+
+@media (min-width: 1600px) {
+  .embla {
+    --_slide-height: 22rem;
+  }
+  .embla.isLarge {
+    --_slide-height: 32rem;
+  }
+}
+@media (min-width: 2200px) {
+  .embla {
+    --_slide-height: 26rem;
+  }
+  .embla.isLarge {
+    --_slide-height: 36rem;
+  }
+}
+
 .embla__viewport {
   overflow: hidden;
 }
