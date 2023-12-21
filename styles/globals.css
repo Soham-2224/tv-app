@@ -103,6 +103,12 @@ html {
   min-width: 0;
   padding-left: var(--_slide-spacing);
   position: relative;
+  cursor: grab;
+  cursor: -moz-grab;
+}
+.embla__slide:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
 }
 .embla__slide__img {
   display: block;
