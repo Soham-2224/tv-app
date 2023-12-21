@@ -8,7 +8,7 @@ import { Movie } from "@/typings"
 
 // --carousel--
 import useEmblaCarousel from "embla-carousel-react"
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay"
 
 // --utils--
 import { cn } from "@/lib/utils"
@@ -18,12 +18,12 @@ type Props = {
     isLarge?: boolean
     movies: Movie[]
     title?: string
-    autoplay?: boolean,
+    autoplay?: boolean
     loop?: boolean
 }
 
 const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false }: Props) => {
-    const autoplayOptions = {
+    const autoplayOptions: AutoplayOptionsType = {
         delay: 3000,
         playOnInit: autoplay,
         stopOnInteraction: !autoplay,
