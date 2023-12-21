@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-
-
 
 @layer base {
   :root {
@@ -52,8 +49,6 @@
   }
 }
 
-
-
  
 @layer base {
   * {
@@ -71,4 +66,51 @@
   .max-section-width {
     @apply max-w-[105rem] mx-auto
   }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* ---embla carousel--- */
+.embla {
+  --_slide-spacing: 1.5rem;
+  --_slide-size: 40%;
+  --_slide-height: 16rem;
+  --_padding: 1.6rem;
+}
+.embla.isLarge {
+  --_slide-size: 80%;
+  --_slide-height: 22rem;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(var(--_slide-spacing) * -1);
+}
+.embla__slide {
+  flex: 0 0 var(--_slide-size);
+  min-width: 0;
+  padding-left: var(--_slide-spacing);
+  position: relative;
+}
+.embla__slide__img {
+  display: block;
+  height: var(--_slide-height) !important;
+  width: 100% !important;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.embla__slide:last-child {
+  padding-right: var(--_padding);
 }

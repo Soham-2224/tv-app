@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         <Header />
                         <div className="flex-1 flex overflow-hidden">
                             <LeftSidebar />
-                            <ScrollArea className="flex-1 h-full">{children}</ScrollArea>
+                            <ScrollArea className="flex-1 h-full | max-section-width">{children}</ScrollArea>
                             <RightSidebar />
                         </div>
                     </div>

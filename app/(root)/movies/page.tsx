@@ -1,25 +1,18 @@
 import MoviesCarousel from "@/components/shared/MoviesCarousel"
-import { getUpcomingMovies } from "@/lib/getMovies"
+import { nowPlayingMovies, topRatedMovies, upcomingMovies } from "@/lib/dummy"
 // import { getNowPlaying, getTopRated, getUpcoming } from "@/lib/getMovies"
 
 export default async function Home() {
 
-    const nowPlayingMovies = await getUpcomingMovies()
-    // const upcomingMovies = await getUpcoming("movie")
-    // const topRatedMovies = await getTopRated("movie")
-
-    console.log(nowPlayingMovies)
-
     return (
         <main className="">
-            <div className="flex flex-col gap-8">
-                {nowPlayingMovies?.map((movie) => (
-                    <p>{movie.title}</p>
-                ))}
-                {/* <MoviesCarousel
+            <div className="flex flex-col gap-8 p-6 pr-0">
+                <MoviesCarousel
                     isLarge
                     movies={nowPlayingMovies}
                     title="Now Playing"
+                    autoplay
+                    loop
                 />
                 <MoviesCarousel
                     movies={upcomingMovies}
@@ -28,7 +21,7 @@ export default async function Home() {
                 <MoviesCarousel
                     movies={topRatedMovies}
                     title="Top-rated movies"
-                /> */}
+                />
             </div>
         </main>
     )
