@@ -14,6 +14,7 @@ const NavLinks = () => {
 
   return NAV_LINKS.map((obj) => (
       <Link
+      key={obj.name}
           href={obj.link}
           className={cn("text-sm text-muted-foreground", pathName.includes(obj.link) && "text-base font-medium text-primary")}
       >

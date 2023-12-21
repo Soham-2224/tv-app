@@ -1,5 +1,6 @@
 import React from "react"
 import { Clock10Icon, CompassIcon, HeartIcon, HomeIcon } from "lucide-react"
+import { Genre, Genres } from "@/typings"
 
 export const NAV_LINKS : ({name: string, link: string})[] = [
     {
@@ -59,7 +60,7 @@ export const SIDEBAR_LINKS : ({icon: (value: boolean) => React.ReactNode, link: 
     }
 ]
 
-export const GENRES : ({id: number, name: string})[] = [
+export const GENRES : Genre[] = [
     {
         id: 28,
         name: "Action"
