@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react"
-import { Hanko } from "@teamhanko/hanko-elements"
+import { useState, useEffect, useContext } from "react"
 
-const hankoApi = process.env.NEXT_PUBLIC_HANKO_API_URL || ""
+import { HankoContext } from "@/components/auth/HankoProvider"
 
 interface HankoUser {
     id: string
@@ -11,17 +10,13 @@ interface HankoUser {
 }
 
 export function useUserData(): HankoUser {
-    const [hanko, setHanko] = useState<Hanko>()
+    const hanko = useContext(HankoContext)
     const [userState, setUserState] = useState<HankoUser>({
         id: "",
         email: "",
         loading: true,
         error: null
     })
-
-    useEffect(() => {
-        import("@teamhanko/hanko-elements").then(({ Hanko }) => setHanko(new Hanko(hankoApi)))
-    }, [])
 
     useEffect(() => {
         hanko?.user
