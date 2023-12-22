@@ -56,6 +56,9 @@ dependencies:
   embla-carousel-react:
     specifier: 8.0.0-rc15
     version: 8.0.0-rc15(react@18.2.0)
+  embla-carousel-wheel-gestures:
+    specifier: 8.0.0-rc05
+    version: 8.0.0-rc05(embla-carousel@8.0.0-rc15)
   jose:
     specifier: ^5.1.3
     version: 5.1.3
@@ -1292,6 +1295,16 @@ packages:
       embla-carousel: 8.0.0-rc15
     dev: false
 
+  /embla-carousel-wheel-gestures@8.0.0-rc05(embla-carousel@8.0.0-rc15):
+    resolution: {integrity: sha512-KfPlGuOvMterlg01FDd+Iws5wefInkyks4ai3p4n4B5WAiyel+DHs4AFu09UmshcnHpIH5cLJQ6VJCbp/kyy1A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      embla-carousel: ^8.0.0 || ~8.0.0-rc03
+    dependencies:
+      embla-carousel: 8.0.0-rc15
+      wheel-gestures: 2.2.5
+    dev: false
+
   /embla-carousel@8.0.0-rc15:
     resolution: {integrity: sha512-s7VPexK2h8VEYjEVQFnJAPcRnY5YqJYicFxKVVyWXP3Hk9FFDkT0kqVxMM1PcL187qHOUgmGVHOrfC8xWy3OKQ==}
     dev: false
@@ -1944,6 +1957,11 @@ packages:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
+    dev: false
+
+  /wheel-gestures@2.2.5:
+    resolution: {integrity: sha512-01BlXRjBVt5Gy0VH2rRqMeccHruTGq2Gd1fx0UqCPN8KDeDCmlTXsRGc/hXJk6W+wnO9CNJp2xfntMNRArBxKQ==}
+    engines: {node: '>=10'}
     dev: false
 
   /wrappy@1.0.2:

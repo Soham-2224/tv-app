@@ -1,19 +1,18 @@
 "use client"
 
-import React from "react"
-import Image from "next/image"
-
 // --types--
 import { Movie } from "@/typings"
 
 // --carousel--
-import useEmblaCarousel from "embla-carousel-react"
+import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react"
 import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay"
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
 
 // --utils--
 import { cn } from "@/lib/utils"
-import getImagePath from "@/lib/getImagePath"
-import CarouselCard from "../CarouselCard"
+
+// --components--
+import CarouselCard from "@/components/shared/CarouselCard"
 
 type Props = {
     isLarge?: boolean
@@ -24,6 +23,13 @@ type Props = {
 }
 
 const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false }: Props) => {
+    const carouselOptions: EmblaOptionsType = {
+        align: "start",
+        containScroll: "trimSnaps",
+        loop: loop,
+        slidesToScroll: isLarge ? 1 : 2
+    }
+
     const autoplayOptions: AutoplayOptionsType = {
         delay: 3000,
         playOnInit: autoplay,
@@ -31,8 +37,9 @@ const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false
         stopOnFocusIn: autoplay
     }
 
-    const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", containScroll: "trimSnaps", loop: loop }, [
-        Autoplay(autoplayOptions)
+    const [emblaRef, emblaApi] = useEmblaCarousel(carouselOptions, [
+        Autoplay(autoplayOptions),
+        WheelGesturesPlugin()
     ])
 
     return (
