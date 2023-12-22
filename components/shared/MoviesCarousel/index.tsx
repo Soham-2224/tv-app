@@ -13,6 +13,7 @@ import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay"
 // --utils--
 import { cn } from "@/lib/utils"
 import getImagePath from "@/lib/getImagePath"
+import CarouselCard from "../CarouselCard"
 
 type Props = {
     isLarge?: boolean
@@ -44,16 +45,11 @@ const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false
                 >
                     <div className="embla__container">
                         {movies.map((movie, idx) => (
-                            <div
-                                className="embla__slide"
-                                key={idx}
-                            >
-                                <Image
-                                    width={500}
-                                    height={100}
-                                    className="embla__slide__img"
-                                    src={getImagePath(movie, isLarge)}
-                                    alt="Your alt text"
+                            <div className="embla__slide">
+                                <CarouselCard
+                                    data={movie}
+                                    key={`${movie.id}_${idx}`}
+                                    isLarge={isLarge}
                                 />
                             </div>
                         ))}

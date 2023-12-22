@@ -134,6 +134,7 @@ html {
   width: 100% !important;
   object-fit: cover;
   border-radius: var(--radius);
+  position: relative;
 }
 .embla__slide:last-child {
   padding-right: var(--_padding);

@@ -11,7 +11,7 @@ export default async function Home() {
                     isLarge
                     movies={nowPlayingMovies}
                     title="Now Playing"
-                    autoplay
+                    // autoplay
                     loop
                 />
                 <MoviesCarousel
