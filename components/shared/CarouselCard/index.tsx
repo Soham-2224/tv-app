@@ -38,7 +38,7 @@ const CarouselCard = ({ isLarge, data, isTv }: Props) => {
                             isStar={!isLarge}
                         />
                     ) : (
-                        <LikeBtn />
+                        <LikeBtn movieId={data?.id} />
                     )}
                 </div>
                 <div className="flex justify-between items-end gap-2">
