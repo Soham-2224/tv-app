@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { Dispatch, SetStateAction } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -14,17 +14,17 @@ import { LogoutBtn } from "./LogoutBtn"
 // --constants--
 import { SIDEBAR_LINKS } from "@/lib/constants"
 
-const NavigationContent = () => {
+const NavigationContent = ({ setOpen }: { setOpen?: Dispatch<SetStateAction<boolean>> }) => {
     const pathName = usePathname()
-    const getBasePath = (link : string) => {
+    const getBasePath = (link: string) => {
         return pathName.includes("movies") ? `/movies${link}` : `/tv${link}`
     }
 
     const getNavLinks = () => {
         return SIDEBAR_LINKS.map((obj) => (
             <Link
+                onClick={() => setOpen && setOpen(false)}
                 key={obj.title}
-                // href={`${basePath}${obj.link}`}
                 href={getBasePath(obj.link)}
             >
                 <Button

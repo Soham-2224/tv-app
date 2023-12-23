@@ -1,28 +1,41 @@
+"use client"
+
+import { useState } from "react"
+
 // -- components --
 import { Button } from "@/components/ui/button"
 import {
     Sheet,
     SheetContent,
-    SheetTrigger
+    SheetTrigger,
 } from "@/components/ui/sheet"
+import NavigationContent from "../NavigationContent"
 
 // -- icons --
 import { MenuIcon } from "lucide-react"
-import NavigationContent from "../NavigationContent"
 
 const Menu = () => {
+
+    const [open, setOpen] = useState(false)
+
     return (
-        <Sheet>
+        <Sheet
+            open={open}
+            onOpenChange={setOpen}
+        >
             <SheetTrigger asChild>
                 <Button
                     className="p-[10px]"
                     variant="outline"
                 >
-                        <MenuIcon size={20} />
+                    <MenuIcon size={20} />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="left" className=" pt-12">
-                <NavigationContent />
+            <SheetContent
+                side="left"
+                className=" pt-12"
+            >
+                <NavigationContent setOpen={setOpen} />
             </SheetContent>
         </Sheet>
     )
