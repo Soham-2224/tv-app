@@ -52,10 +52,12 @@ const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false
                 >
                     <div className="embla__container">
                         {movies.map((movie, idx) => (
-                            <div className="embla__slide">
+                            <div
+                                key={`${movie.id}_${idx}`}
+                                className="embla__slide"
+                            >
                                 <CarouselCard
                                     data={movie}
-                                    key={`${movie.id}_${idx}`}
                                     isLarge={isLarge}
                                 />
                             </div>
