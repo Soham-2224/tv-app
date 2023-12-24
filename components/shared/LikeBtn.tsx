@@ -1,6 +1,12 @@
-import { Favourite } from "@/typings"
-import { HeartIcon } from "lucide-react"
 import React, { useEffect, useState } from "react"
+
+// --types--
+import { Favourite } from "@/typings"
+
+// --icons--
+import { HeartIcon } from "lucide-react"
+
+// --components--
 import { toast } from "sonner"
 
 const LikeBtn = ({ data }: { data: Favourite }) => {
@@ -38,7 +44,10 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
                     size={25}
                 />
             ) : (
-                <HeartIcon className=" text-white" size={25} />
+                <HeartIcon
+                    className=" text-white"
+                    size={25}
+                />
             )}
         </button>
     )

@@ -49,15 +49,13 @@ const CarouselCard = ({ isLarge, data, isTv }: Props) => {
                             isStar={!isLarge}
                         />
                     ) : (
-                        <LikeBtn
-                            data={likeBtnProps}
-                        />
+                        <LikeBtn data={likeBtnProps} />
                     )}
                 </div>
                 <div className="flex justify-between items-end gap-2">
                     <div>
-                        <h1 className={cn("text-white", isLarge && "text-2xl font-semibold")}>{data?.title}</h1>
-                        <h2 className={cn("text-white/60", isLarge && "text-xl font-medium")}>
+                        <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{data?.title}</h1>
+                        <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
                             {new Date(data?.release_date).getFullYear()}
                         </h2>
                         {isLarge ? (
