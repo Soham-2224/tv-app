@@ -12,6 +12,7 @@ import Header from "@/components/shared/Header"
 import LeftSidebar from "@/components/shared/LeftSidebar"
 import RightSidebar from "@/components/shared/RightSidebar"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Toaster } from "@/components/ui/sonner"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                             <RightSidebar />
                         </div>
                     </div>
+                    <Toaster richColors />
                 </ThemeProvider>
             </body>
         </html>
