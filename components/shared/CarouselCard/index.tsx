@@ -21,6 +21,17 @@ type Props = {
 }
 
 const CarouselCard = ({ isLarge, data, isTv }: Props) => {
+
+    const likeBtnProps = {
+        backdrop_path: data?.backdrop_path,
+        id: data?.id,
+        original_title: data?.original_title,
+        poster_path: data?.release_date,
+        release_date: data?.release_date,
+        title: data?.title,
+        vote_average: data?.vote_average
+    }
+
     return (
         <div className=" hover:scale-95 overflow-hidden group transition-transform duration-300 relative">
             <Image
@@ -38,7 +49,9 @@ const CarouselCard = ({ isLarge, data, isTv }: Props) => {
                             isStar={!isLarge}
                         />
                     ) : (
-                        <LikeBtn movieId={data?.id} />
+                        <LikeBtn
+                            data={likeBtnProps}
+                        />
                     )}
                 </div>
                 <div className="flex justify-between items-end gap-2">

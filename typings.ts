@@ -30,3 +30,12 @@ export type Genre = {
 export type Genres = {
   genres: Genre[];
 };
+
+export type Favourite = Omit<
+    Movie,
+    "genre_ids" | "overview" | "popularity" | "video" | "vote_count" | "adult" |
+    "original_language"
+> & {
+    // Define specific properties for Favourite type, if any
+    title?: string
+}
