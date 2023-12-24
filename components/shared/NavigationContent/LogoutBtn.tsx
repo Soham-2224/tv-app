@@ -17,6 +17,7 @@ import { HankoContext } from "@/components/auth/HankoProvider"
 
 // --utils--
 import { useUserData } from "@/lib/hooks/useUserData"
+import { toast } from "sonner"
 
 export function LogoutBtn() {
     const router = useRouter()
@@ -25,14 +26,24 @@ export function LogoutBtn() {
 
     const logout = async () => {
         if (!hanko) return
-        try {
-            await hanko?.user.logout()
-            router.push("/login")
-            router.refresh()
-            return
-        } catch (error) {
-            console.error("Error during logout:", error)
-        }
+
+        const logoutPromise = () =>
+            new Promise((resolve, reject) => {
+                hanko?.user
+                    ?.logout()
+                    .then(() => resolve(true))
+                    .catch((error) => reject(error))
+            })
+
+            toast.promise(logoutPromise, {
+                loading: "Logging out...",
+                success: () => {
+                    router.push("/login")
+                    router.refresh()
+                    return "Logout successful"
+                },
+                error: "Error during logout"
+            })
     }
 
     if (loading) {
