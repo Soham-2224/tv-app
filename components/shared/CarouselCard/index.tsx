@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 
 // --types--
-import { Movie } from "@/typings"
+import { Favourite, Movie } from "@/typings"
 
 // --utils--
 import { cn } from "@/lib/utils"
@@ -16,12 +16,12 @@ import { PlayIcon } from "lucide-react"
 
 type Props = {
     isLarge?: boolean
-    data: Movie
+    data: Movie | Favourite
     isTv?: boolean
+    withLikeIcon?: boolean
 }
 
-const CarouselCard = ({ isLarge, data, isTv }: Props) => {
-
+const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
     const likeBtnProps = {
         backdrop_path: data?.backdrop_path,
         id: data?.id,
@@ -42,7 +42,7 @@ const CarouselCard = ({ isLarge, data, isTv }: Props) => {
                 alt="Your alt text"
             />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between bg-gradient-to-t from-black/80 p-4 rounded-lg">
-                <div className={cn("flex", isLarge && "justify-end")}>
+                <div className={cn("flex", isLarge && "justify-end", withLikeIcon && "justify-between")}>
                     {!isLarge ? (
                         <RatingBadge
                             rating={data?.vote_average}
@@ -51,6 +51,7 @@ const CarouselCard = ({ isLarge, data, isTv }: Props) => {
                     ) : (
                         <LikeBtn data={likeBtnProps} />
                     )}
+                    {withLikeIcon ? <LikeBtn data={likeBtnProps} /> : null}
                 </div>
                 <div className="flex justify-between items-end gap-2">
                     <div>
