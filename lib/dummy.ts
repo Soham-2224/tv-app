@@ -1,4 +1,4 @@
-import { Movie } from '@/typings'
+import { Movie, SingleMovieDetail } from '@/typings'
 
 export const upcomingMovies : Movie[] = [
     {
@@ -1027,3 +1027,85 @@ export const topRatedMovies: Movie[] = [
         vote_count: 4043
     }
 ]
+
+export const singleMovieDetail: SingleMovieDetail = {
+    adult: false,
+    backdrop_path: "/yOm993lsJyPmBodlYjgpPwBjXP9.jpg",
+    belongs_to_collection: null,
+    budget: 125000000,
+    genres: [
+        {
+            id: 35,
+            name: "Comedy"
+        },
+        {
+            id: 10751,
+            name: "Family"
+        },
+        {
+            id: 14,
+            name: "Fantasy"
+        }
+    ],
+    homepage: "https://www.wonkamovie.com",
+    id: 787699,
+    imdb_id: "tt6166392",
+    original_language: "en",
+    original_title: "Wonka",
+    overview:
+        "Willy Wonka – chock-full of ideas and determined to change the world one delectable bite at a time – is proof that the best things in life begin with a dream, and if you’re lucky enough to meet Willy Wonka, anything is possible.",
+    popularity: 947.54,
+    poster_path: "/qhb1qOilapbapxWQn9jtRCMwXJF.jpg",
+    production_companies: [
+        {
+            id: 174,
+            logo_path: "/9tefnXnJLGQL97cxs6S3EWEhVyx.png",
+            name: "Warner Bros. Pictures",
+            origin_country: "US"
+        },
+        {
+            id: 79,
+            logo_path: "/at4uYdwAAgNRKhZuuFX8ShKSybw.png",
+            name: "Village Roadshow Pictures",
+            origin_country: "US"
+        },
+        {
+            id: 214904,
+            logo_path: "/9S6xSAsUiE1zuKzxayco7fD0p26.png",
+            name: "The Roald Dahl Story Company",
+            origin_country: "GB"
+        },
+        {
+            id: 437,
+            logo_path: "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png",
+            name: "Heyday Films",
+            origin_country: "GB"
+        }
+    ],
+    production_countries: [
+        {
+            iso_3166_1: "GB",
+            name: "United Kingdom"
+        },
+        {
+            iso_3166_1: "US",
+            name: "United States of America"
+        }
+    ],
+    release_date: "2023-12-06",
+    revenue: 254702717,
+    runtime: 117,
+    spoken_languages: [
+        {
+            english_name: "English",
+            iso_639_1: "en",
+            name: "English"
+        }
+    ],
+    status: "Released",
+    tagline: "Every good thing in this world started with a dream.",
+    title: "Wonka",
+    video: false,
+    vote_average: 7.194,
+    vote_count: 509
+}
