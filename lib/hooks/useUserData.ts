@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react"
 
 import { HankoContext } from "@/components/auth/HankoProvider"
+import useUserStore from "@/store/useUser"
 
-interface HankoUser {
-    id: string
+export type HankoUser = {
     email: string
     loading: boolean
     error: string | null
@@ -12,17 +12,24 @@ interface HankoUser {
 export function useUserData(): HankoUser {
     const hanko = useContext(HankoContext)
     const [userState, setUserState] = useState<HankoUser>({
-        id: "",
         email: "",
         loading: true,
         error: null
     })
+    const storedUser = useUserStore((state) => state.email)
+    const updateUser = useUserStore((state) => state.setUser)
 
     useEffect(() => {
+
+        if (storedUser.length) {
+            return setUserState({ email: storedUser, loading: false, error: null })
+        }
+
         hanko?.user
             .getCurrent()
-            .then(({ id, email }) => {
-                setUserState({ id, email, loading: false, error: null })
+            .then(({ email }) => {
+                updateUser({ email, loading: false, error: null })
+                setUserState({  email, loading: false, error: null })
             })
             .catch((error) => {
                 setUserState((prevState) => ({ ...prevState, loading: false, error }))

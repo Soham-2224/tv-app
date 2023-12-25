@@ -22,7 +22,7 @@ import { toast } from "sonner"
 export function LogoutBtn() {
     const router = useRouter()
     const hanko = useContext(HankoContext)
-    const {email, loading} = useUserData()
+    const { email, loading } = useUserData()
 
     const logout = async () => {
         if (!hanko) return
@@ -35,15 +35,15 @@ export function LogoutBtn() {
                     .catch((error) => reject(error))
             })
 
-            toast.promise(logoutPromise, {
-                loading: "Logging out...",
-                success: () => {
-                    router.push("/login")
-                    router.refresh()
-                    return "Logout successful"
-                },
-                error: "Error during logout"
-            })
+        toast.promise(logoutPromise, {
+            loading: "Logging out...",
+            success: () => {
+                router.push("/login")
+                router.refresh()
+                return "Logout successful"
+            },
+            error: "Error during logout"
+        })
     }
 
     if (loading) {
