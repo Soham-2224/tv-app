@@ -44,7 +44,7 @@ const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false
 
     return (
         <div>
-            <h1 className=" text-lg font-semibold mb-4">{title}</h1>
+            <h1 className=" title-bold mb-4">{title}</h1>
             <div className={cn("embla", isLarge && "isLarge")}>
                 <div
                     className="embla__viewport"

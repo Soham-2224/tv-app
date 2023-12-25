@@ -18,7 +18,7 @@ const RatingBadge = ({ rating, isStar = false, classNames }: Props) => {
         <Badge
             variant="secondary"
             className={cn(
-                "gap-1 px-2 py-1 bg-black/50 text-white hover:bg-black/75",
+                "gap-1 h-fit px-2 py-1 bg-black/50 text-white hover:bg-black/75",
                 !isStar && "p-0 bg-transparent hover:bg-transparent text-foreground",
                 classNames
             )}
