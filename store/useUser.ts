@@ -7,7 +7,7 @@ type ActionType = {
 
 const useUserStore = create<HankoUser & ActionType>()((set) => ({
     email: "",
-    loading: false,
+    loading: true,
     error: null,
     setUser: (user) => set(() => ({email: user.email, loading: user.loading, error: user.error}))
 }))

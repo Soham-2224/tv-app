@@ -21,12 +21,20 @@ export function useUserData(): HankoUser {
 
     useEffect(() => {
 
+        if (!hanko) return
+        
+        if (!hanko.session.isValid()) {
+            setUserState({ email: "", loading: false, error: "logged out" })
+            updateUser({ email: "", loading: false, error: "logged out" })
+            return 
+        }
+        
         if (storedUser.length) {
             return setUserState({ email: storedUser, loading: false, error: null })
         }
 
-        hanko?.user
-            .getCurrent()
+        hanko.user
+            ?.getCurrent()
             .then(({ email }) => {
                 updateUser({ email, loading: false, error: null })
                 setUserState({  email, loading: false, error: null })
