@@ -13,16 +13,21 @@ import { toast } from "sonner"
 // --zustand--
 import useUserStore from "@/store/useUser"
 
+// --localstorage--
+import { useLocalStorage, writeStorage } from "@rehooks/local-storage"
+
 const LikeBtn = ({ data }: { data: Favourite }) => {
     const router = useRouter()
     const pathname = usePathname()
     const storedUser = useUserStore((state) => state.email)
+    const [likedMovies] = useLocalStorage<Favourite[]>("likedMovies")
     const [isLiked, setIsLiked] = useState<boolean>(false)
 
     useEffect(() => {
-        const likedMovies = JSON.parse(localStorage.getItem("likedMovies") || "[]") as Favourite[]
-        const isMovieLiked = likedMovies.some((likedMovie) => likedMovie.id === data.id)
-        setIsLiked(isMovieLiked)
+        if (likedMovies) {   
+            const isMovieLiked = likedMovies.some((likedMovie) => likedMovie.id === data.id)
+            setIsLiked(isMovieLiked)
+        }
     }, [data])
 
     const handleLikeClick = () => {
@@ -35,18 +40,20 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
             })
         }
 
-        const likedMovies = JSON.parse(localStorage.getItem("likedMovies") || "[]") as Favourite[]
+        if (!likedMovies) return;
+        
         const updatedLikedMovies = isLiked
             ? likedMovies.filter((likedMovie) => likedMovie.id !== data.id)
-            : [...likedMovies, data]
+            : [data, ...likedMovies]
+        
+        writeStorage('likedMovies', updatedLikedMovies)
 
-        localStorage.setItem("likedMovies", JSON.stringify(updatedLikedMovies))
         if (isLiked) {
             if (pathname.includes("favourite")) {
                 toast("Movie removed from favourites", {
                     action: {
                         label: "Undo",
-                        onClick: () => localStorage.setItem("likedMovies", JSON.stringify([...updatedLikedMovies, data]))
+                        onClick: () => writeStorage("likedMovies", [data, ...updatedLikedMovies])
                     }
                 })
                 setIsLiked(true)
