@@ -31,7 +31,7 @@ const Header = () => {
                     />
                     <div className="flex gap-2">
                         <ModeToggle />
-                        <div className="md:hidden">
+                        <div className="lg:hidden">
                             <Menu />
                         </div>
                     </div>
