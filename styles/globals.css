@@ -66,6 +66,9 @@
   .max-section-width {
     @apply max-w-[105rem] mx-auto
   }
+  .title-bold {
+    @apply text-lg font-semibold
+  }
 }
 
 html {

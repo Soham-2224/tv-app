@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
 
 // --types--
 import { Favourite } from "@/typings"
@@ -9,7 +10,13 @@ import { HeartIcon } from "lucide-react"
 // --components--
 import { toast } from "sonner"
 
+// --zustand--
+import useUserStore from "@/store/useUser"
+
 const LikeBtn = ({ data }: { data: Favourite }) => {
+    const router = useRouter()
+    const pathname = usePathname()
+    const storedUser = useUserStore((state) => state.email)
     const [isLiked, setIsLiked] = useState<boolean>(false)
 
     useEffect(() => {
@@ -19,6 +26,15 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
     }, [data])
 
     const handleLikeClick = () => {
+        if (!storedUser.length) {
+            return toast("Log in to add a movie as a favorite.", {
+                action: {
+                    label: "Login",
+                    onClick: () => router.push("/login")
+                }
+            })
+        }
+
         const likedMovies = JSON.parse(localStorage.getItem("likedMovies") || "[]") as Favourite[]
         const updatedLikedMovies = isLiked
             ? likedMovies.filter((likedMovie) => likedMovie.id !== data.id)
@@ -26,11 +42,21 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
 
         localStorage.setItem("likedMovies", JSON.stringify(updatedLikedMovies))
         if (isLiked) {
+            if (pathname.includes("favourite")) {
+                toast("Movie removed from favourites", {
+                    action: {
+                        label: "Undo",
+                        onClick: () => localStorage.setItem("likedMovies", JSON.stringify([...updatedLikedMovies, data]))
+                    }
+                })
+                setIsLiked(true)
+                return
+            }
             toast.warning("Movie removed from favourites")
         } else {
             toast.success("Movie added to favourites")
         }
-        setIsLiked(!isLiked)
+        setIsLiked((prev) => !prev)
     }
 
     return (

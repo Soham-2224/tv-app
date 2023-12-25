@@ -40,7 +40,7 @@ const RightSidebar = () => {
     return (
         <div className=" hidden xl:block py-6 px-4 w-1/5 max-w-[250px] h-full bg-background border-l border-border">
             <div>
-                <h1 className=" text-base font-semibold">Popular movies</h1>
+                <h1 className="title-bold">Popular movies</h1>
                 <div className="flex flex-col gap-3 mt-4">
                     {MOVIE_API_RES?.slice(0, 4).map((movie) => (
                         <PosterColumn
