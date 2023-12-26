@@ -38,7 +38,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                 width={500}
                 height={100}
                 className="embla__slide__img"
-                src={getImagePath(data, isLarge)}
+                src={getImagePath(data, isLarge) || ""}
                 alt="Your alt text"
             />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between bg-gradient-to-t from-black/80 p-4 rounded-lg">

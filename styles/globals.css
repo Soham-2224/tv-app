@@ -73,6 +73,7 @@
   .card-grid {
     @apply grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mt-4
   }
+
 }
 
 html {
@@ -146,3 +147,17 @@ html {
 .embla__slide:last-child {
   padding-right: var(--_padding);
 }
+
+/* --dark black gradient */
+.dark-graient::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-image: linear-gradient(to top, #0A0A0A, rgba(0,0,0,0));
+    z-index: 1;
+}
+
+
