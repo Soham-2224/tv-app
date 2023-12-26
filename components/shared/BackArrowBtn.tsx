@@ -10,7 +10,7 @@ const BackArrowBtn = () => {
     const router = useRouter()
 
   return (
-    <Button variant="link" className=' text-foreground' onClick={() => router.back()}>
+    <Button variant="link" className=' text-white p-0 h-fit' onClick={() => router.back()}>
         <ArrowLeftCircle size={20} className=' mr-1' />
         Back
     </Button>
