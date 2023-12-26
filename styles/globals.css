@@ -165,15 +165,11 @@ html {
   height: 100%;
   fill: none;
   stroke-width: 5;
-  stroke: rgba(255, 255, 255, 0.05);
   transform: translate(5px, 5px);
   stroke-linecap: round;
 }
 
 .percent svg circle:nth-child(2) {
-  stroke: #fff;
   stroke-dasharray: 160px;
   stroke-dashoffset: 50px;
 }
-
-

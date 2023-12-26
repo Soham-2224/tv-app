@@ -20,11 +20,13 @@ const CircularProgress = ({vote} :{vote: number}) => {
       <div className={cn("percent scale-75 lg:scale-95 relative w-[60px] h-[60px] rounded-[50%]")}>
           <svg className="">
               <circle
+              className=" stroke-foreground/30"
                   cx="25"
                   cy="25"
                   r="25"
               ></circle>
               <circle
+              className=" stroke-foreground"
                   ref={circleRef}
                   cx="25"
                   cy="25"
@@ -32,7 +34,7 @@ const CircularProgress = ({vote} :{vote: number}) => {
               ></circle>
           </svg>
           <div className="number absolute top-0 left-0 w-full h-full flex justify-center items-center">
-              <h2 className="text-white font-bold text-base">
+              <h2 className="text-foreground font-bold text-base">
                   {vote?.toFixed(1)}
                   <span className=" text-sm ">%</span>
               </h2>
