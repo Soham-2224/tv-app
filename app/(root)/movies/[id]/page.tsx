@@ -16,7 +16,7 @@ export default async function Page() {
                     src={getImagePath({ data, isLarge: true })}
                     width={800}
                     height={600}
-                    className=" relative h-[60vh] md:h-[70vh] 2xl:h-[50vh] object-cover w-full"
+                    className=" relative h-[40vh] md:h-[70vh] 2xl:h-[50vh] object-cover w-full"
                     alt={data?.title || ""}
                 />
             </div>
@@ -27,13 +27,13 @@ export default async function Page() {
                 </div>
             </div>
             <div className="relative block bg-background | dark-gradient section-padding">
-                <div className="flex items-center gap-5 relative -top-24">
+                <div className="flex max-sm:flex-col md:items-center gap-5 relative -top-24">
                     <Image
                         src={getImagePath({ data, isPoster: true })}
                         width={150}
                         height={250}
                         alt={data?.title || ""}
-                        className=" w-36 h-auto rounded-lg"
+                        className=" w-36 h-auto rounded-lg max-sm:mx-auto"
                     />
                     <div className="flex-1">
                         <h1 className=" text-2xl font-bold">{data?.title || data?.original_title}</h1>
