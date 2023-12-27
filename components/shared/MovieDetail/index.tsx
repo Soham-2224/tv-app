@@ -6,15 +6,26 @@ import LikeBtn from "@/components/shared/LikeBtn"
 import { Badge } from "@/components/ui/badge"
 import CircularProgress from "@/components/ui/circularProgress"
 
-const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
+const LabelValue = ({ label, children }: { label: string; children: any }) => {
+    return (
+        <div className="flex items-center gap-1">
+            <p className=" text-muted-foreground">{label}:</p>
+            <p>{children}</p>
+        </div>
+    )
+}
 
-    const getMoneyValue = (value : number) : string => {
-        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value)
+const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
+    const getMoneyValue = (value: number): string => {
+        return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
+            value
+        )
     }
 
     const getGenreBadges = () => {
         return data?.genres?.map((genre) => (
             <Badge
+                key={genre.id}
                 variant="outline"
                 className=" py-2 px-4 border-black dark:border-border"
             >
@@ -56,19 +67,12 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                         ) : null}
                         <div className="flex items-center gap-2 mt-2">{getGenreBadges()}</div>
                         <div className="flex items-center justify-between mt-6">
-                            <div className=" text-sm font-medium">
-                                <div className="flex items-center gap-1">
-                                    <p className=" text-muted-foreground">Status:</p>
-                                    <p>{data?.status}</p>
-                                </div>
-                                <div className="flex items-center gap-1 mt-2">
-                                    <p className="text-muted-foreground">Released on:</p>
-                                    <p>{data?.release_date}</p>
-                                </div>
-                                { data?.budget ? (<div className="flex items-center gap-1 mt-2">
-                                    <p className="text-muted-foreground">Budget:</p>
-                                    <p>{getMoneyValue(data.budget)}</p>
-                                </div>) : null}
+                            <div className=" flex flex-col gap-1 text-sm font-medium">
+                                <LabelValue label="Status">{data?.status}</LabelValue>
+                                <LabelValue label="Released on">{data?.release_date}</LabelValue>
+                                {data?.budget ? (
+                                    <LabelValue label="Budget">{getMoneyValue(data.budget)}</LabelValue>
+                                ) : null}
                             </div>
                             <div className="flex gap-1 items-center">
                                 <CircularProgress vote={data?.vote_average} />
