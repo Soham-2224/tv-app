@@ -1,40 +1,39 @@
 export type Movie = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path?: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+    adult: boolean
+    backdrop_path: string | null
+    genre_ids: number[]
+    id: number
+    original_language: string
+    original_title: string
+    overview: string
+    popularity: number
+    poster_path?: string
+    release_date: string
+    title: string
+    video: boolean
+    vote_average: number
+    vote_count: number
+}
 
 export type SearchResults = {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-};
+    page: number
+    results: Movie[]
+    total_pages: number
+    total_results: number
+}
 
 export type Genre = {
-  id: number;
-  name: string;
-};
+    id: number
+    name: string
+}
 
 export type Genres = {
-  genres: Genre[];
-};
+    genres: Genre[]
+}
 
 export type Favourite = Omit<
     Movie,
-    "genre_ids" | "overview" | "popularity" | "video" | "vote_count" | "adult" |
-    "original_language"
+    "genre_ids" | "overview" | "popularity" | "video" | "vote_count" | "adult" | "original_language"
 > & {
     // Define specific properties for Favourite type, if any
     title?: string
@@ -53,6 +52,9 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
     spoken_languages?: SpokenLanguage[]
     status?: string
     tagline?: string
+    videos?: {
+        results: Video[]
+    }
 }
 
 export interface BelongsToCollection {
@@ -78,4 +80,17 @@ export type SpokenLanguage = {
     english_name: string
     iso_639_1: string
     name: string
+}
+
+export type Video = {
+    iso_639_1: string
+    iso_3166_1: string
+    name: string
+    key: string
+    site: string
+    size: number
+    type: string
+    official: boolean
+    published_at: string
+    id: string
 }

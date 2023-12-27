@@ -5,6 +5,7 @@ import Image from "next/image"
 import LikeBtn from "@/components/shared/LikeBtn"
 import { Badge } from "@/components/ui/badge"
 import CircularProgress from "@/components/ui/circularProgress"
+import TrailerBtn from "./TrailerBtn"
 
 const LabelValue = ({ label, children }: { label: string; children: any }) => {
     return (
@@ -90,6 +91,12 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                         </div>
                     </div>
                 </div>
+                {data?.videos?.results?.length ? (
+                    <TrailerBtn
+                        videos={data.videos.results}
+                        runtime={data?.runtime}
+                    />
+                ) : null}
             </div>
         </>
     )
