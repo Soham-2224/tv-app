@@ -47,7 +47,7 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
     imdb_id: string
     production_companies?: ProductionCompany[]
     production_countries?: ProductionCountry[]
-    revenue: number
+    revenue?: number | null
     runtime: number
     spoken_languages?: SpokenLanguage[]
     status?: string
@@ -55,18 +55,42 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
     videos?: {
         results: Video[]
     }
+    credits: {
+        cast: Actor[],
+        crew: Crew[]
+    }
 }
 
-export interface BelongsToCollection {
+export type Actor = {
+    adult: boolean
+    gender: number
+    id: number
+    known_for_department: string
+    name: string
+    original_name: string
+    popularity: number
+    profile_path: string | null
+    cast_id: number
+    character: string
+    credit_id: string
+    order: number
+}
+
+export type Crew = Omit<Actor, "character" | "order" | "cast_id"> & {
+    department: string
+    job: string
+}
+
+export type BelongsToCollection = {
     id: number
     name: string
-    poster_path: string
+    poster_path: string | null
     backdrop_path: string
 }
 
 export type ProductionCompany = {
     id: number
-    logo_path: string
+    logo_path: string | null
     name: string
     origin_country: string
 }

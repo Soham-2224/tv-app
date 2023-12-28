@@ -48,6 +48,7 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                 />
                 <h1 className=" text-lg font-semibold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>
+                <h1 className=" text-lg font-semibold mt-20">Top Cast</h1>
             </div>
         </>
     )
