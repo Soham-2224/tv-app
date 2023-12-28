@@ -91,12 +91,12 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                         </div>
                     </div>
                 </div>
-                {data?.videos?.results?.length ? (
-                    <TrailerBtn
-                        videos={data.videos.results}
-                        runtime={data?.runtime}
-                    />
-                ) : null}
+                {/* {data?.videos?.results?.length ? ( */}
+                <TrailerBtn
+                    videos={data?.videos?.results?.length ? data?.videos?.results : []}
+                    runtime={data?.runtime}
+                />
+                {/* ) : null} */}
             </div>
         </>
     )
