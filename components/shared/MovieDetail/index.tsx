@@ -44,6 +44,7 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                 <TrailerBtn
                     videos={data?.videos?.results?.length ? data?.videos?.results : []}
                     runtime={data?.runtime}
+                    language={data?.original_language}
                 />
                 <h1 className=" text-lg font-semibold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>

@@ -2,13 +2,14 @@
 
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog"
+import { Separator } from "@/components/ui/separator"
 import { Video } from "@/typings"
 import { PlayIcon } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 
-const TrailerBtn = ({ videos, runtime }: { videos: Video[]; runtime: number }) => {
+const TrailerBtn = ({ videos, runtime, language }: { videos: Video[]; runtime: number, language: string }) => {
     const searchParams = useSearchParams()
 
     const watch = searchParams.get("watch")
@@ -43,7 +44,10 @@ const TrailerBtn = ({ videos, runtime }: { videos: Video[]; runtime: number }) =
 
     return (
         <div className="flex items-center gap-4 relative -translate-y-14">
-            <Dialog open={modalOpen} onOpenChange={() => setModalOpen(prev => !prev)}>
+            <Dialog
+                open={modalOpen}
+                onOpenChange={() => setModalOpen((prev) => !prev)}
+            >
                 <DialogTrigger asChild>
                     <Button
                         disabled={!videos.length}
@@ -58,14 +62,19 @@ const TrailerBtn = ({ videos, runtime }: { videos: Video[]; runtime: number }) =
                     </Button>
                 </DialogTrigger>
                 <DialogContent className=" max-sm:p-0 w-[99vw] md:w-[80vw] lg:w-[60vw] min-w-[99vw] md:min-w-[80vw] lg:min-w-[60vw]">
-                    {trailer ?
-                    <LiteYouTubeEmbed
-                        id={trailer.key}
-                        title={trailer.name}
-                    /> : null}
+                    {trailer ? (
+                        <LiteYouTubeEmbed
+                            id={trailer.key}
+                            title={trailer.name}
+                        />
+                    ) : null}
                 </DialogContent>
             </Dialog>
-            <p className="text-base font-medium">{formatRuntime(runtime)}</p>
+            <div className="flex item-center gap-2 h-5">
+                <p className="text-base font-medium">{formatRuntime(runtime)}</p>
+                <Separator orientation="vertical" />
+                <p className="text-base font-medium">{language.toUpperCase()}</p>
+            </div>
         </div>
     )
 }
