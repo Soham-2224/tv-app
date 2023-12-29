@@ -138,3 +138,5 @@ export const GENRES : Genre[] = [
         name: "Western"
     }
 ]
+
+export const BASE_IMAGE_PATH = "https://image.tmdb.org/t/p/"

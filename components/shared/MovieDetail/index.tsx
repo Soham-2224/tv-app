@@ -1,3 +1,4 @@
+
 import Image from "next/image"
 
 // --types--
@@ -11,8 +12,14 @@ import TrailerBtn from "./TrailerBtn"
 import MovieInfoSide from "./MovieInfoSide"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
+import CastCard from "./CastCard"
 
 const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
+
+    const getCasts = () => {
+        return data?.credits?.cast?.slice(0,9)?.map((cast) => <CastCard data={cast} />)
+    }
+
     return (
         <>
             <div className="sticky top-0 left-0 w-full h-fit">
@@ -49,6 +56,7 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                 <h1 className=" text-lg font-semibold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>
                 <h1 className=" text-lg font-semibold mt-20">Top Cast</h1>
+                <div className=" grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6 mt-4">{getCasts()}</div>
             </div>
         </>
     )
