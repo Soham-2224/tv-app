@@ -12,7 +12,6 @@ import TrailerBtn from "./TrailerBtn"
 import MovieInfoSide from "./MovieInfoSide"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
-import CastCard from "./CastCard"
 import Casts from "./Casts"
 
 const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {

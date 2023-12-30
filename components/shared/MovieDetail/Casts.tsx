@@ -1,5 +1,8 @@
+
+// --types--
 import { Actor, Crew } from "@/typings"
-import React from "react"
+
+// --components--
 import CastCard from "./CastCard"
 import { Dialog, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
