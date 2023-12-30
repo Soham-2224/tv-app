@@ -2,7 +2,7 @@
 import Image from "next/image"
 
 // --types--
-import { SingleMovieDetail } from "@/typings"
+import { Review, SingleMovieDetail } from "@/typings"
 
 // --utils--
 import getImagePath from "@/lib/getImagePath"
@@ -13,8 +13,9 @@ import MovieInfoSide from "./MovieInfoSide"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
 import Casts from "./Casts"
+import ReviewCard from "./ReviewCard"
 
-const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
+const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail, reviews?: Review[] }) => {
 
     return (
         <>
@@ -49,9 +50,18 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                     runtime={data?.runtime}
                     language={data?.original_language}
                 />
+
                 <h1 className=" text-2xl font-semibold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>
+
                 <Casts data={data?.credits} />
+
+                {reviews ? (
+                    <>
+                        <h1 className=" text-2xl font-semibold mt-20">Top Reviews</h1>
+                        <div className="flex flex-col gap-8 mt-4">{reviews.map(review => <ReviewCard key={review.id} data={review} />)}</div>
+                    </>
+                ) : null}
             </div>
         </>
     )

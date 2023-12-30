@@ -12,7 +12,7 @@ import { Separator } from "@/components/ui/separator"
 
 const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
     const getCasts = () => {
-        return data?.cast?.slice(0, 9)?.map((cast) => <CastCard data={cast} />)
+        return data?.cast?.slice(0, 9)?.map((cast) => <CastCard key={`${cast?.id}${cast?.name}`} data={cast} />)
     }
 
     return (
@@ -29,7 +29,7 @@ const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                                 {data?.cast?.map((cast) => (
-                                    <CastCard data={cast} />
+                                    <CastCard key={`${cast?.id}${cast?.name}`} data={cast} />
                                 ))}
                             </div>
                         }
@@ -38,7 +38,7 @@ const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                                 {data?.crew?.map((crew) => (
-                                    <CastCard data={crew} />
+                                    <CastCard key={`${crew?.id}${crew?.name}`} data={crew} />
                                 ))}
                             </div>
                         }
