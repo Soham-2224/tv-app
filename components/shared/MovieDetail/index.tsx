@@ -13,12 +13,9 @@ import MovieInfoSide from "./MovieInfoSide"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
 import CastCard from "./CastCard"
+import Casts from "./Casts"
 
 const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
-
-    const getCasts = () => {
-        return data?.credits?.cast?.slice(0,9)?.map((cast) => <CastCard data={cast} />)
-    }
 
     return (
         <>
@@ -53,10 +50,9 @@ const MovieDetail = ({ data }: { data: SingleMovieDetail }) => {
                     runtime={data?.runtime}
                     language={data?.original_language}
                 />
-                <h1 className=" text-lg font-semibold">Overview</h1>
+                <h1 className=" text-2xl font-semibold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>
-                <h1 className=" text-lg font-semibold mt-20">Top Cast</h1>
-                <div className=" grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6 mt-4">{getCasts()}</div>
+                <Casts data={data?.credits} />
             </div>
         </>
     )
