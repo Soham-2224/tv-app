@@ -82,26 +82,41 @@
 
 html {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ---embla carousel--- */
 .embla {
   --_slide-spacing: 1.5rem;
-  --_slide-size: 40%;
+  --_slide-size: 60%;
   --_slide-height: 16rem;
   --_padding: 1.6rem;
 }
 .embla.isLarge {
-  --_slide-size: 80%;
+  --_slide-size: 70%;
   --_slide-height: 22rem;
 }
-
+@media (min-width: 400px) {
+  .embla.isLarge {
+    --_slide-size: 75%;
+  }
+}
+@media (min-width: 768px) {
+  .embla {
+    --_slide-size: 40%;
+  }
+  .embla.isLarge {
+    --_slide-size: 80%;
+    --_slide-height: 26rem;
+  }
+}
 @media (min-width: 1600px) {
   .embla {
     --_slide-height: 22rem;

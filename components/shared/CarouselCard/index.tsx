@@ -59,7 +59,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                     <div>
                         <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{data?.title}</h1>
                         <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
-                            {new Date(data?.release_date).getFullYear()}
+                            {new Date(data?.release_date).getFullYear() || ""}
                         </h2>
                         {isLarge ? (
                             <div className="mt-2">

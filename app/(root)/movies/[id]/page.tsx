@@ -1,4 +1,3 @@
-
 // --dummy--
 import { similarMovies, singleMovieDetail, singleMovieReview } from "@/lib/dummy"
 
@@ -11,8 +10,14 @@ export default async function Page() {
     const similar = similarMovies
 
     return (
-        <main className="relative pb-4">
-            <MovieDetail data={data} reviews={reviews} similarMovies={similar} />
+        <main className="relative">
+            <div className="pb-4 flex flex-col relative">
+                <MovieDetail
+                    data={data}
+                    reviews={reviews}
+                    similarMovies={similar}
+                />
+            </div>
         </main>
     )
 }
