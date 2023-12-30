@@ -1,4 +1,4 @@
-import { Movie, SingleMovieDetail } from '@/typings'
+import { Movie, Review, SingleMovieDetail } from '@/typings'
 
 export const upcomingMovies : Movie[] = [
     {
@@ -2657,3 +2657,80 @@ export const singleMovieDetail: SingleMovieDetail = {
         ]
     }
 }
+
+export const singleMovieReview : Review[] = [
+        {
+            author: "Manuel São Bento",
+            author_details: {
+                name: "Manuel São Bento",
+                username: "msbreviews",
+                avatar_path: null,
+                rating: 7
+            },
+            content:
+                'FULL SPOILER-FREE REVIEW @ https://www.firstshowing.net/2023/review-nia-dacostas-the-marvels-is-a-solid-mid-tier-mcu-movie/\r\n\r\n"The Marvels is a film that showcases some of the well-known strengths and weaknesses of the MCU. It struggles with script and editing issues that hinder its narrative cohesion and character depth, besides an unnecessarily short runtime that doesn’t help its villain.\r\n\r\nFortunately, it excels in its ensemble cast and their chemistry - Iman Vellani is the clear MVP - creative action set pieces, impressive visual effects, stunning costumes, and well-timed humor, which all together push the movie into safe harbor.\r\n\r\nNia DaCosta offers a light, entertaining superhero blockbuster that may fall short of greatness, but leaves room for improvement in future installments of the franchise."\r\n\r\nRating: B',
+            created_at: "2023-11-09T19:42:31.799Z",
+            id: "654d36275a5ed000c6ad204a",
+            updated_at: "2023-11-09T19:42:31.931Z",
+            url: "https://www.themoviedb.org/review/654d36275a5ed000c6ad204a"
+        },
+        {
+            author: "CinemaSerf",
+            author_details: {
+                name: "CinemaSerf",
+                username: "Geronimo1967",
+                avatar_path: "/1kks3YnVkpyQxzw36CObFPvhL5f.jpg",
+                rating: 6
+            },
+            content:
+                'When Kree ruler "Dar-Benn" (Zawe Ashton) unearths a powerful bracelet, she unleashes a power in it\'s sister being worn, decoratively, by the enthusiastic but a bit annoying "Kamala" (Iman Vellani) and next thing we find chaos ensues. It appears that her new powers connect her to "Danvers" (Brie Larson) and her slightly estranged cohort "Rambeau" (Teyonah Parris). When they use their powers they find themselves transported into each other\'s shoes - causing mayhem all over the place, especially at the family home of the rookie superhero who is as yet unaware of just quite how powerful her shiny amulet is. "Dar-Benn" is out for revenge. After "Danvers" destroyed the AI that controlled their planet, it has gone into terminal decay and so she decides to reinstate her world by stealing the atmosphere from one world, then the water from another - where they only speak in song, so perhaps no great loss - before deciding to borrow the sun from Earth to reinvigorate their own failing star. With a little help from "Nick Fury" (Samuel L. Jackson) the three have to galvanise their powers and focus on thwarting this dastardly design before it\'s too late. Now there is nothing even remotely original in this. It\'s all join the dots Marvel adventure with the usual pyrotechnics, spectacular visual effects and thinnest of stories. The denouement is never in doubt and actually feels rather rushed after a first half hour of repetitive combat scenes that don\'t draw breath but don\'t really entertain either. Larson is a natural actor (she reminds me a lot of Grace Kelly) but nobody here really has much by way of dialogue to work with as we see this film manoeuvred into the path of another franchise that it would appear destined to join with next time. Barbra Streisand makes a surprise (vocal) appearance during quite an innovative scene herding cats and simultaneously saving people, but I found the rest of this to be same old, same old and though shorter than we are used to, it\'s still all a bit old hat. Looks good, but I doubt that you\'ll never remember it.',
+            created_at: "2023-11-11T09:46:05.135Z",
+            id: "654f4d5d67b6130102e3625f",
+            updated_at: "2023-11-11T09:48:34.603Z",
+            url: "https://www.themoviedb.org/review/654f4d5d67b6130102e3625f"
+        },
+        {
+            author: "Brent Marchant",
+            author_details: {
+                name: "Brent Marchant",
+                username: "Brent_Marchant",
+                avatar_path: null,
+                rating: 5
+            },
+            content:
+                "When I first heard the title of this movie, I thought it was about a 1960s girls’ singing group. And, frankly, that would have probably made for a better movie. Writer-director Nia DaCosta’s third feature outing and the latest in the Marvel Universe paradigm is a wildly inconsistent superhero movie that tries too hard to do too much and doesn’t have a script to support it. Too many of its plot elements aren’t adequately explained until well into the story, while others aren’t explained at all, leaving viewers who aren’t comic book laureates wondering what’s going on (particularly at film’s end). Meanwhile, other narrative aspects frequently appear gimmicky and grow old quickly, such as the introduction of the primary superpower that its three protagonists share, one that almost becomes slapstickish after an all-too-brief while. On top of that, the CGI effects vacillate from one end of the quality spectrum to the other, creating a mix of images that are either startling to look at or stunningly cheesy at best. Add to that a villain that isn’t particularly menacing, along with attempts at humor that either succeed brilliantly (cat lovers take note) or fall flat and look incredibly lame (as aficionados of musical theater will undoubtedly attest), all of which further add to the picture’s pervasive inconsistency. The inclusion of ample clues for advancing the overarching Marvel Universe storyline continues here, too, furthering a trend that’s growing tiresome in the studio’s releases, a development akin to the “Paul is dead” legacy come to life with every passing picture. Then there’s the trio of heroes themselves, who often appear more like they’ve been plucked from a giddy slumber party flick or a Cyndi Lauper video than taking center stage as seriously empowered champions in an action-adventure offering. All of these failings combine to make this production more of a forgettable placeholder in the Marvel mythology than a standalone feature (not to mention a pale substitute for a sequel to the far-superior film that launched the Captain Marvel franchise in 2019). In short, “The Marvels” is as much of a mess as it is a movie, and that’s troubling for several reasons. It lends credence to the growing criticism that films like this aren’t to be taken seriously. It reinforces the notion that they’re cookie-cutter in nature, easily interchangeable with one another. And it raises questions about the career choices of lead actress Brie Larson, who, though quite capable of playing roles like these, is running the risk of becoming type-cast, a troubling prospect for an Academy Award-winning actress who possesses a depth of talent and is handily adept at taking on better and more serious material than this. In the wake of this release, Marvel Studios should take a step back and seriously assess where its future is headed, especially if movies like this are any indication. As pictures like “Wakanda Forever” (2022) show, the studio is capable of better work – and it’s time to show viewers that.",
+            created_at: "2023-11-11T23:49:36.686Z",
+            id: "6550131067b61300c84b80e6",
+            updated_at: "2023-11-11T23:49:36.801Z",
+            url: "https://www.themoviedb.org/review/6550131067b61300c84b80e6"
+        },
+        {
+            author: "Limitedlatency",
+            author_details: {
+                name: "",
+                username: "Limitedlatency",
+                avatar_path: null,
+                rating: 2
+            },
+            content:
+                "A trashtastic conclusion to an epic failure of a series of movies. Maybe finally the M-SHE-U can rest in peace and we can get some actual good movies made.",
+            created_at: "2023-11-13T19:39:37.144Z",
+            id: "65527b79d4fe0400fe049a23",
+            updated_at: "2023-11-21T18:07:36.119Z",
+            url: "https://www.themoviedb.org/review/65527b79d4fe0400fe049a23"
+        },
+        {
+            author: "photobythomas",
+            author_details: {
+                name: "",
+                username: "photobythomas",
+                avatar_path: null,
+                rating: 6
+            },
+            content: "Better than I expected. Go go girl power! Boooo to all the haters!\r\n\r\n66/100",
+            created_at: "2023-11-18T23:08:22.662Z",
+            id: "655943e6ea84c71096deec0c",
+            updated_at: "2023-11-21T15:42:54.588Z",
+            url: "https://www.themoviedb.org/review/655943e6ea84c71096deec0c"
+        }
+    ]
