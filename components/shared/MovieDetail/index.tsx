@@ -1,8 +1,7 @@
-
 import Image from "next/image"
 
 // --types--
-import { Review, SingleMovieDetail } from "@/typings"
+import { Movie, Review, SingleMovieDetail } from "@/typings"
 
 // --utils--
 import getImagePath from "@/lib/getImagePath"
@@ -14,9 +13,18 @@ import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
 import Casts from "./Casts"
 import ReviewCard from "./ReviewCard"
+import MoviesCarousel from "../MoviesCarousel"
+import { Separator } from "@/components/ui/separator"
 
-const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail, reviews?: Review[] }) => {
-
+const MovieDetail = ({
+    data,
+    reviews,
+    similarMovies
+}: {
+    data: SingleMovieDetail
+    reviews?: Review[]
+    similarMovies?: Movie[]
+}) => {
     return (
         <>
             <div className="sticky top-0 left-0 w-full h-fit">
@@ -51,16 +59,36 @@ const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail, reviews?: Rev
                     language={data?.original_language}
                 />
 
-                <h1 className=" text-2xl font-semibold">Overview</h1>
+                <h1 className=" title-bold">Overview</h1>
                 <p className=" text-base font-medium mt-2">{data?.overview}</p>
+
+                <Separator className=" my-10" />
 
                 <Casts data={data?.credits} />
 
+                <Separator className=" my-10" />
+
                 {reviews ? (
                     <>
-                        <h1 className=" text-2xl font-semibold mt-20">Top Reviews</h1>
-                        <div className="flex flex-col gap-8 mt-4">{reviews.map(review => <ReviewCard key={review.id} data={review} />)}</div>
+                        <h1 className="title-bold">Top Reviews</h1>
+                        <div className="flex flex-col gap-8 mt-4">
+                            {reviews.map((review) => (
+                                <ReviewCard
+                                    key={review.id}
+                                    data={review}
+                                />
+                            ))}
+                        </div>
                     </>
+                ) : null}
+
+                <Separator className=" my-10" />
+
+                {similarMovies ? (
+                    <MoviesCarousel
+                        movies={similarMovies}
+                        title="Similar movies"
+                    />
                 ) : null}
             </div>
         </>

@@ -17,7 +17,7 @@ const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
 
     return (
         <>
-            <h1 className=" text-2xl font-semibold mt-20">Top Casts</h1>
+            <h1 className=" title-bold">Top Casts</h1>
             <div className=" grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6 mt-4">{getCasts()}</div>
             <Dialog>
                 <DialogTrigger asChild>
@@ -25,20 +25,26 @@ const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
                 </DialogTrigger>
                 <DialogContent className=" w-[90%] max-section-width">
                     <ScrollArea className=" h-[80vh] sm:h-[70vh] ">
-                        <DialogHeader className=" text-2xl font-semibold">Casts</DialogHeader>
+                        <DialogHeader className=" title-bold">Casts</DialogHeader>
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                                 {data?.cast?.map((cast) => (
-                                    <CastCard key={`${cast?.id}${cast?.name}`} data={cast} />
+                                    <CastCard
+                                        key={`${cast?.id}${cast?.name}`}
+                                        data={cast}
+                                    />
                                 ))}
                             </div>
                         }
                         <Separator className=" mt-10" />
-                        <DialogHeader className=" text-2xl font-semibold mt-10">Crew</DialogHeader>
+                        <DialogHeader className=" title-bold mt-10">Crew</DialogHeader>
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                                 {data?.crew?.map((crew) => (
-                                    <CastCard key={`${crew?.id}${crew?.name}`} data={crew} />
+                                    <CastCard
+                                        key={`${crew?.id}${crew?.name}`}
+                                        data={crew}
+                                    />
                                 ))}
                             </div>
                         }

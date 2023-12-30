@@ -67,7 +67,7 @@
     @apply max-w-7xl mx-auto
   }
   .title-bold {
-    @apply text-lg font-semibold
+    @apply text-2xl font-semibold
   }
 
   .card-grid {
