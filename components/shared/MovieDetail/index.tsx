@@ -42,7 +42,7 @@ const MovieDetail = ({
                     <LikeBtn data={data} />
                 </div>
             </div>
-            <div className="relative block bg-background | dark-gradient section-padding">
+            <div className="relative block bg-background | dark-gradient section-padding max-sm:w-[100vw]">
                 <div className="flex max-sm:flex-col md:items-center gap-5 relative -top-24">
                     <Image
                         src={getImagePath({ data, isPoster: true })}
