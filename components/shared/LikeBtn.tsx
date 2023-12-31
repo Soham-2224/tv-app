@@ -26,7 +26,7 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
     const [isLiked, setIsLiked] = useState<boolean>(false)
 
     useEffect(() => {
-        if (likedMovies) {   
+        if (likedMovies) {
             const isMovieLiked = likedMovies.some((likedMovie) => likedMovie.id === data.id)
             setIsLiked(isMovieLiked)
         }
@@ -42,13 +42,13 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
             })
         }
 
-        if (!likedMovies) return;
-        
+        const currentLikedMovies = likedMovies ?? []
+
         const updatedLikedMovies = isLiked
-            ? likedMovies.filter((likedMovie) => likedMovie.id !== data.id)
-            : [data, ...likedMovies]
-        
-        writeStorage('likedMovies', updatedLikedMovies)
+            ? currentLikedMovies?.filter((likedMovie) => likedMovie.id !== data.id)
+            : [data, ...currentLikedMovies]
+
+        writeStorage("likedMovies", updatedLikedMovies)
 
         if (isLiked) {
             if (pathname.includes("favourite")) {
