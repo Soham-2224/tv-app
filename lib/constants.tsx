@@ -38,17 +38,6 @@ export const SIDEBAR_LINKS : ({icon: (value: boolean) => React.ReactNode, link: 
     },
     {
         icon: (isActive) => (
-            <Clock10Icon
-                className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
-                    isActive ? " text-primary" : " text-foreground"
-                }`}
-            />
-        ),
-        link: "/comming-soon",
-        title: "Comming soon"
-    },
-    {
-        icon: (isActive) => (
             <HeartIcon
                 className={`mr-2 h-4 w-4 xl:h-5 xl:w-5 2xl:h-6 2xl:w-6 ${
                     isActive ? " text-primary" : " text-foreground"
