@@ -87,7 +87,7 @@ const MovieDetail = ({
                 {similarMovies ? (
                     <MoviesCarousel
                         movies={similarMovies}
-                        title="Similar movies"
+                        title="Similar movie"
                     />
                 ) : null}
             </div>
