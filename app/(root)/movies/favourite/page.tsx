@@ -1,8 +1,9 @@
 "use client"
 
-import CarouselCard from "@/components/shared/CarouselCard"
 // --components--
+import CarouselCard from "@/components/shared/CarouselCard"
 import CenterLoginBtn from "@/components/shared/CenterLoginBtn"
+import Loading from "./loading"
 
 // --zustand--
 import useUserStore from "@/store/useUser"
@@ -18,9 +19,10 @@ export default function Page() {
     const { email, loading, error } = useUserStore((state) => state)
     const [likedMovies] = useLocalStorage<Favourite[]>("likedMovies")
 
-    if (loading) return <h1>Loading...</h1>
-
     if (error) return <CenterLoginBtn />
+
+    if (loading) return <Loading />
+
 
     return (
         <main className=" p-4 md:p-6">
