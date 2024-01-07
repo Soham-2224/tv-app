@@ -19,9 +19,9 @@ export default function Page() {
     const { email, loading, error } = useUserStore((state) => state)
     const [likedMovies] = useLocalStorage<Favourite[]>("likedMovies")
 
-    if (error) return <CenterLoginBtn />
-
     if (loading) return <Loading />
+    
+    if (error) return <CenterLoginBtn />
 
 
     return (
