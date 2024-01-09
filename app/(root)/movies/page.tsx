@@ -1,29 +1,28 @@
-import MoviesCarousel from "@/components/shared/MoviesCarousel"
-import { nowPlayingMovies, topRatedMovies, upcomingMovies } from "@/lib/dummy"
-import { getNowPlaying, getTopRated, getUpcoming } from "@/lib/getMovies"
+import {MoviesCarousel} from "@/components/shared/MoviesCarousel"
 
-export default async function Home() {
-
-    const fetchedMovies = await getNowPlaying("movie");
+export default async function Page() {
 
     return (
         <main className="">
             <div className="flex flex-col gap-8 p-6 pr-0">
-                <MoviesCarousel
-                    isLarge
-                    movies={fetchedMovies || nowPlayingMovies}
-                    title="Now Playing"
-                    // autoplay
-                    loop
-                />
-                <MoviesCarousel
-                    movies={upcomingMovies}
-                    title="Upcoming movies"
-                />
-                <MoviesCarousel
-                    movies={topRatedMovies}
-                    title="Top-rated movies"
-                />
+                <section>
+                    <h1 className=" title-bold mb-4">Now Playing</h1>
+                    <MoviesCarousel
+                        isLarge
+                        // autoplay
+                        type="movie"
+                        loop
+                        endpoint="nowPlaying"
+                    />
+                </section>
+                <section>
+                    <h1 className=" title-bold mb-4">Upcoming movies</h1>
+                    <MoviesCarousel type="movie" endpoint="upcoming" />
+                </section>
+                <section>
+                    <h1 className=" title-bold mb-4">Top-rated movies</h1>
+                    <MoviesCarousel type="movie" endpoint="topRated" />
+                </section>
             </div>
         </main>
     )

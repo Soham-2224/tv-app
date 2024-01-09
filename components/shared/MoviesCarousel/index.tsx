@@ -1,72 +1,33 @@
-"use client"
-
 // --types--
 import { Movie } from "@/typings"
 
-// --carousel--
-import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react"
-import Autoplay, { AutoplayOptionsType } from "embla-carousel-autoplay"
-import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
-
 // --utils--
 import { cn } from "@/lib/utils"
+import { ENDPOINT_KEYS, fetchData } from "@/lib/getMovies"
 
 // --components--
-import CarouselCard from "@/components/shared/CarouselCard"
+import CarouselContainer from "./CarouselContainer"
 
-type Props = {
+export type CarouselProps = {
     isLarge?: boolean
-    movies: Movie[]
-    title?: string
+    data: Movie[] | undefined
+    type: "movie" | "tv"
     autoplay?: boolean
     loop?: boolean
+    endpoint: keyof typeof ENDPOINT_KEYS
 }
 
-const MoviesCarousel = ({ isLarge, movies, title, autoplay = false, loop = false }: Props) => {
-    const carouselOptions: EmblaOptionsType = {
-        align: "start",
-        containScroll: "trimSnaps",
-        loop: loop,
-        slidesToScroll: isLarge ? 1 : 2
-    }
+export async function MoviesCarousel(Props: Omit<CarouselProps, "data">) {
+    const { isLarge, endpoint, type } = Props
 
-    const autoplayOptions: AutoplayOptionsType = {
-        delay: 3000,
-        playOnInit: autoplay,
-        stopOnInteraction: !autoplay,
-        stopOnFocusIn: autoplay
-    }
-
-    const [emblaRef, emblaApi] = useEmblaCarousel(carouselOptions, [
-        Autoplay(autoplayOptions),
-        WheelGesturesPlugin()
-    ])
+    const fetchedData = await fetchData(type, endpoint)
 
     return (
-        <div>
-            <h1 className=" title-bold mb-4">{title}</h1>
-            <div className={cn("embla", isLarge && "isLarge")}>
-                <div
-                    className="embla__viewport"
-                    ref={emblaRef}
-                >
-                    <div className="embla__container">
-                        {movies.map((movie, idx) => (
-                            <div
-                                key={`${movie.id}_${idx}`}
-                                className="embla__slide"
-                            >
-                                <CarouselCard
-                                    data={movie}
-                                    isLarge={isLarge}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+        <div className={cn("embla", isLarge && "isLarge")}>
+            <CarouselContainer
+                {...Props}
+                data={fetchedData}
+            />
         </div>
     )
 }
-
-export default MoviesCarousel
