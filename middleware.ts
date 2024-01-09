@@ -18,5 +18,8 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/"]
+    matcher: [
+        /* Match paths starting with "/" and not containing excluded patterns: */
+        '/((?!api|_next/static|_next/image|favicon.ico|movies|tv).*)',
+    ]
 }
