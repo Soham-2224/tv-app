@@ -3,7 +3,7 @@ import { Movie } from "@/typings"
 
 // --utils--
 import { cn } from "@/lib/utils"
-import { ENDPOINT_KEYS, fetchData } from "@/lib/getMovies"
+import { ENDPOINT_KEYS, fetchCarouselData } from "@/lib/getMovies"
 
 // --components--
 import CarouselContainer from "./CarouselContainer"
@@ -17,10 +17,10 @@ export type CarouselProps = {
     endpoint: keyof typeof ENDPOINT_KEYS
 }
 
-export async function MoviesCarousel(Props: Omit<CarouselProps, "data">) {
+export default async function MoviesCarousel(Props: Omit<CarouselProps, "data">) {
     const { isLarge, endpoint, type } = Props
 
-    const fetchedData = await fetchData(type, endpoint)
+    const fetchedData = await fetchCarouselData(type, endpoint)
 
     return (
         <div className={cn("embla", isLarge && "isLarge")}>
