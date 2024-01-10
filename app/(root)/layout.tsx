@@ -13,7 +13,6 @@ import LeftSidebar from "@/components/shared/LeftSidebar"
 import RightSidebar from "@/components/shared/RightSidebar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Toaster } from "@/components/ui/sonner"
-import Providers from "@/components/providers"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
@@ -26,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={cn("h-screen bg-background font-sans antialiased", inter.variable)}>
-                <Providers>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
@@ -43,7 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         </div>
                         <Toaster richColors />
                     </ThemeProvider>
-                </Providers>
             </body>
         </html>
     )
