@@ -88,6 +88,7 @@ const MovieDetail = ({
                     <MoviesCarousel
                         type="movie"
                         endpoint="similar"
+                        id={data?.id}
                     />
                 ) : null}
             </div>
