@@ -15,16 +15,10 @@ import Casts from "./Casts"
 import ReviewCard from "./ReviewCard"
 import MoviesCarousel from "../MoviesCarousel"
 import { Separator } from "@/components/ui/separator"
+import { Suspense } from "react"
+import CarouselSkeleton from "../Skeletons/CarouselSkeleton"
 
-const MovieDetail = ({
-    data,
-    reviews,
-    similarMovies
-}: {
-    data: SingleMovieDetail
-    reviews?: Review[]
-    similarMovies?: Movie[]
-}) => {
+const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail; reviews?: Review[] }) => {
     return (
         <>
             <div className="sticky top-0 left-0 w-full h-fit">
@@ -84,13 +78,14 @@ const MovieDetail = ({
 
                 <Separator className=" my-10" />
 
-                {similarMovies ? (
+                <h1 className=" title-bold mb-4">Similar Movies</h1>
+                <Suspense fallback={<CarouselSkeleton />}>
                     <MoviesCarousel
                         type="movie"
                         endpoint="similar"
                         id={data?.id}
                     />
-                ) : null}
+                </Suspense>
             </div>
         </>
     )
