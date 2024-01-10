@@ -47,14 +47,13 @@ const NavigationContent = ({ setOpen }: { setOpen?: Dispatch<SetStateAction<bool
                     <LogoutBtn />
                 </HankoProvider>
             </nav>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center">
                 <small className=" text-muted-foreground">Powered by</small>
-                <Image
-                    src="/assets/tmdb.svg"
-                    width={50}
-                    height={20}
-                    alt="tmdb logo"
-                />
+                <a href="https://www.themoviedb.org/" target="_blank">
+                    <h1 className=" text-base font-bold bg-gradient-to-r from-[#90CEA1] to-[#00B3E5] px-1.5 rounded ">
+                        TMDB
+                    </h1>
+                </a>
             </div>
         </div>
     )
