@@ -14,13 +14,13 @@ export type CarouselProps = {
     type: "movie" | "tv"
     autoplay?: boolean
     loop?: boolean
-    endpoint: keyof typeof ENDPOINT_KEYS
+    endpoint?: keyof typeof ENDPOINT_KEYS
 }
 
-export default async function MoviesCarousel(Props: Omit<CarouselProps, "data">) {
-    const { isLarge, endpoint, type } = Props
+export default async function MoviesCarousel(Props: Omit<CarouselProps, "data"> & {id?: number}) {
+    const { isLarge, endpoint = "upcoming", type, id } = Props
 
-    const fetchedData = await fetchCarouselData(type, endpoint)
+    const fetchedData = await fetchCarouselData(type, endpoint, id)
 
     return (
         <div className={cn("embla", isLarge && "isLarge")}>

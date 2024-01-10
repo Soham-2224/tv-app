@@ -3,7 +3,8 @@ const BASE_PATH = "https://api.themoviedb.org/3"
 export const ENDPOINT_KEYS = {
     upcoming: "upcoming",
     topRated: "top_rated",
-    nowPlaying: "now_playing"
+    nowPlaying: "now_playing",
+    similar: "similar"
 }
 
 async function fetchFromTMDB(url: URL, cacheTime?: number) {
@@ -27,13 +28,17 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
 
 }
 
-export async function fetchCarouselData(type: "movie" | "tv", endpoint: keyof typeof ENDPOINT_KEYS) {
-    const endpointKey = ENDPOINT_KEYS[endpoint]
+export async function fetchCarouselData(type: "movie" | "tv", endpoint: keyof typeof ENDPOINT_KEYS, id?: number) {
+    let endpointKey = ENDPOINT_KEYS[endpoint]
+
+    if (endpoint === "similar" && id) {
+        endpointKey = `${id}/${endpointKey}`
+    }
 
     const url = new URL(`${BASE_PATH}/${type}/${endpointKey}`)
     const data = await fetchFromTMDB(url)
 
-    return data?.results;
+    return data?.results
 }
 
 export async function getDiscoverMovies(id?: string, keywords?: string) {
