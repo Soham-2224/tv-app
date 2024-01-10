@@ -1,6 +1,8 @@
-import MoviesCarousel  from "@/components/shared/MoviesCarousel"
-import CarouselSkeleton from "@/components/shared/Skeletons/CarouselSkeleton"
 import { Suspense } from "react"
+
+// --components--
+import MoviesCarousel from "@/components/shared/MoviesCarousel"
+import CarouselSkeleton from "@/components/shared/Skeletons/CarouselSkeleton"
 
 export default async function Page() {
     return (
@@ -18,20 +20,24 @@ export default async function Page() {
                         />
                     </Suspense>
                 </section>
-                {/* <section>
+                <section>
                     <h1 className=" title-bold mb-4">Upcoming movies</h1>
-                    <MoviesCarousel
-                        type="movie"
-                        endpoint="upcoming"
-                    />
+                    <Suspense fallback={<CarouselSkeleton />}>
+                        <MoviesCarousel
+                            type="movie"
+                            endpoint="upcoming"
+                        />
+                    </Suspense>
                 </section>
                 <section>
                     <h1 className=" title-bold mb-4">Top-rated movies</h1>
-                    <MoviesCarousel
-                        type="movie"
-                        endpoint="topRated"
-                    />
-                </section> */}
+                    <Suspense fallback={<CarouselSkeleton />}>
+                        <MoviesCarousel
+                            type="movie"
+                            endpoint="topRated"
+                        />
+                    </Suspense>
+                </section>
             </div>
         </main>
     )
