@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 
 // --types--
-import { Favourite, Movie } from "@/typings"
+import { Favourite, Movie, TV } from "@/typings"
 
 // --utils--
 import { cn } from "@/lib/utils"
@@ -16,7 +16,7 @@ import { PlayIcon } from "lucide-react"
 
 type Props = {
     isLarge?: boolean
-    data: Movie & Favourite
+    data: Movie | TV | Favourite
     isTv?: boolean
     withLikeIcon?: boolean
 }
@@ -26,9 +26,11 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
         backdrop_path: data?.backdrop_path,
         id: data?.id,
         original_title: data?.original_title,
-        poster_path: data?.release_date,
-        release_date: data?.release_date || data?.first_air_date,
-        title: data?.title || data?.name,
+        poster_path: data?.poster_path,
+        release_date: data?.release_date,
+        first_air_date: data?.first_air_date,
+        name: data?.name,
+        title: data?.title,
         vote_average: data?.vote_average
     }
 
@@ -61,7 +63,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                             {data?.title || data?.name}
                         </h1>
                         <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
-                            {new Date(data?.release_date).getFullYear() || ""}
+                            {new Date(data?.release_date || data?.first_air_date).getFullYear() || ""}
                         </h2>
                         {isLarge ? (
                             <div className="mt-2">

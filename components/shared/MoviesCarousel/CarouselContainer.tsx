@@ -12,7 +12,6 @@ import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures"
 import CarouselCard from "@/components/shared/CarouselCard"
 
 const CarouselContainer = ({ isLarge, data, type, autoplay = false, loop = false }: CarouselProps) => {
-
     const carouselOptions: EmblaOptionsType = {
         align: "start",
         containScroll: "trimSnaps",
@@ -41,6 +40,7 @@ const CarouselContainer = ({ isLarge, data, type, autoplay = false, loop = false
                         className="embla__slide"
                     >
                         <CarouselCard
+                            isTv={type === "tv"}
                             data={movie}
                             isLarge={isLarge}
                         />

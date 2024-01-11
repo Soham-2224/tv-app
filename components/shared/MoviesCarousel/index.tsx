@@ -1,5 +1,5 @@
 // --types--
-import { Movie } from "@/typings"
+import { Movie, TV } from "@/typings"
 
 // --utils--
 import { cn } from "@/lib/utils"
@@ -10,7 +10,7 @@ import CarouselContainer from "./CarouselContainer"
 
 export type CarouselProps = {
     isLarge?: boolean
-    data: Movie[] | undefined
+    data: Movie[] | TV[] | undefined
     type: "movie" | "tv"
     autoplay?: boolean
     loop?: boolean
