@@ -1,9 +1,4 @@
-export type TV = {
-    first_air_date: "2018-08-27"
-    name: "Chronicles of the Sun"
-}
-
-export type Movie = {
+export type CommonMovieTv = {
     adult: boolean
     backdrop_path: string | null
     genre_ids: number[]
@@ -13,16 +8,28 @@ export type Movie = {
     overview: string
     popularity: number
     poster_path?: string | null
-    release_date: string
-    title: string
     video: boolean
     vote_average: number
     vote_count: number
-} & TV
+    title: string
+    release_date: string
+    first_air_date: string
+    name: string
+}
+
+export type Movie = CommonMovieTv & {
+    first_air_date?: string
+    name?: string
+}
+
+export type TV = CommonMovieTv & {
+    title?: string
+    release_date?: string
+}
 
 export type SearchResults = {
     page: number
-    results: Movie[]
+    results: Movie[] | TV[]
     total_pages: number
     total_results: number
 }
@@ -36,21 +43,18 @@ export type Genres = {
     genres: Genre[]
 }
 
-export type Favourite = Omit<
-    Movie,
-    | "genre_ids"
-    | "overview"
-    | "popularity"
-    | "video"
-    | "vote_count"
-    | "adult"
-    | "original_language"
+export type Favourite = Pick<
+    CommonMovieTv,
+    | "backdrop_path"
+    | "id"
+    | "original_title"
+    | "poster_path"
+    | "release_date"
+    | "title"
+    | "vote_average"
     | "name"
     | "first_air_date"
-> & {
-    // Define specific properties for Favourite type, if any
-    title?: string
-}
+>
 
 export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
     belongs_to_collection?: BelongsToCollection | null
@@ -72,6 +76,8 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
         cast: Actor[]
         crew: Crew[]
     }
+    first_air_date?: string
+    name?: string
 }
 
 export type Actor = {
