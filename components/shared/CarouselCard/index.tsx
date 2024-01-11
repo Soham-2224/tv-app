@@ -39,7 +39,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
             <Image
                 width={500}
                 height={100}
-                blurDataURL="/assets/no-image-placeholder.png"
+                blurDataURL="https://placehold.co/50x50/EEE/31343C/webp"
                 placeholder="blur"
                 className="embla__slide__img"
                 src={getImagePath({ data, isLarge: true })}
