@@ -7,7 +7,9 @@ export const ENDPOINT_KEYS = {
     topRated: "top_rated",
     nowPlaying: "now_playing",
     similar: "similar",
-    popular: "popular"
+    popular: "popular",
+    onTheAir: "on_the_air",
+    airingToday: "airing_today"
 }
 
 async function fetchFromTMDB(url: URL, cacheTime?: number) {
@@ -22,6 +24,7 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
         }
     }
     try {
+        // console.log(url.toString())
         const response = await fetch(url.toString(), options)
         const data = await response.json()
         return data
@@ -41,6 +44,7 @@ export async function fetchCarouselData(type: "movie" | "tv", endpoint: keyof ty
     // await new Promise((resolve) => setTimeout(resolve, 100000))
 
     const url = new URL(`${BASE_PATH}/${type}/${endpointKey}`)
+
     const data = (await fetchFromTMDB(url)) as SearchResults
 
     return data?.results
