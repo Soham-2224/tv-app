@@ -1,3 +1,8 @@
+export type TV = {
+    first_air_date: "2018-08-27"
+    name: "Chronicles of the Sun"
+}
+
 export type Movie = {
     adult: boolean
     backdrop_path: string | null
@@ -13,7 +18,7 @@ export type Movie = {
     video: boolean
     vote_average: number
     vote_count: number
-}
+} & TV
 
 export type SearchResults = {
     page: number
@@ -33,7 +38,15 @@ export type Genres = {
 
 export type Favourite = Omit<
     Movie,
-    "genre_ids" | "overview" | "popularity" | "video" | "vote_count" | "adult" | "original_language"
+    | "genre_ids"
+    | "overview"
+    | "popularity"
+    | "video"
+    | "vote_count"
+    | "adult"
+    | "original_language"
+    | "name"
+    | "first_air_date"
 > & {
     // Define specific properties for Favourite type, if any
     title?: string
@@ -56,7 +69,7 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
         results: Video[]
     }
     credits: {
-        cast: Actor[],
+        cast: Actor[]
         crew: Crew[]
     }
 }
@@ -133,3 +146,5 @@ export type Review = {
     updated_at: string
     url: string
 }
+
+export type MovieOrTv = "movie" | "tv"
