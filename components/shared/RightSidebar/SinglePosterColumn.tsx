@@ -31,7 +31,7 @@ const SinglePosterColumn = ({ data } : {data : Movie | undefined}) => {
             />
             <div className="flex flex-col justify-between gap-4">
                 <div className="">
-                    <h1 className=" line-clamp-2 group-hover:text-primary text-sm font-semibold">{data?.title}</h1>
+                    <h1 className=" line-clamp-2 group-hover:text-primary text-sm font-semibold">{data?.title || data?.name}</h1>
                     <p className="line-clamp-1 text-xs font-normal text-muted-foreground">{filteredGenres}</p>
                 </div>
                 <RatingBadge rating={data?.vote_average || 0} />
