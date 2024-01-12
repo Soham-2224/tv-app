@@ -2,26 +2,49 @@ import { Suspense } from "react"
 import Image from "next/image"
 
 // --types--
-import { Movie, Review, SingleMovieDetail } from "@/typings"
+import { MovieOrTv } from "@/typings"
 
 // --utils--
 import getImagePath from "@/lib/getImagePath"
 
 // --components--
+import Casts from "./Casts"
+import Reviews from "./Reviews"
 import TrailerBtn from "./TrailerBtn"
 import MovieInfoSide from "./MovieInfoSide"
-import BackArrowBtn from "@/components/shared/BackArrowBtn"
-import LikeBtn from "@/components/shared/LikeBtn"
-import Casts from "./Casts"
 import MoviesCarousel from "../MoviesCarousel"
-import { Separator } from "@/components/ui/separator"
 import CarouselSkeleton from "../Skeletons/CarouselSkeleton"
-import Reviews from "./Reviews"
+import LikeBtn from "@/components/shared/LikeBtn"
+import { Separator } from "@/components/ui/separator"
+import BackArrowBtn from "@/components/shared/BackArrowBtn"
 
-import { singleMovieDetail } from "@/lib/dummy"
+// --utils--
+import { fetchDetails } from "@/lib/getMovies"
+import { getConditionalProperty, getTitle, hasProperty } from "@/lib/utils"
 
-const MovieDetail = () => {
-    const data = singleMovieDetail
+export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv}) {
+    const data = await fetchDetails("movie", id)
+
+     const baseProps = {
+         backdrop_path: data?.backdrop_path,
+         id: data?.id,
+         poster_path: data?.poster_path,
+         vote_average: data?.vote_average
+     }
+     const likeBtnProps = type === "movie"
+         ? {
+               ...baseProps,
+               original_title: getConditionalProperty(data, "original_title"),
+               release_date: getConditionalProperty(data, "release_date"),
+               title: getConditionalProperty(data, "title")
+           }
+         : {
+               ...baseProps,
+               first_air_date: getConditionalProperty(data, "first_air_date"),
+               name: getConditionalProperty(data, "name"),
+               original_name: getConditionalProperty(data, "original_name")
+           }
+
     return (
         <>
             <div className="sticky top-0 left-0 w-full h-fit">
@@ -30,13 +53,13 @@ const MovieDetail = () => {
                     width={800}
                     height={600}
                     className=" relative h-[40vh] md:h-[70vh] 2xl:h-[50vh] object-cover w-full"
-                    alt={data?.title || ""}
+                    alt={getTitle(data)}
                 />
             </div>
             <div className=" block absolute top-0 left-0 w-full pt-4 section-padding">
                 <div className="flex w-full justify-between items-center">
                     <BackArrowBtn />
-                    <LikeBtn data={data} />
+                    <LikeBtn data={likeBtnProps} type={type} />
                 </div>
             </div>
             <div className="relative block bg-background | dark-gradient section-padding max-sm:w-[100vw]">
@@ -45,14 +68,14 @@ const MovieDetail = () => {
                         src={getImagePath({ data, isPoster: true })}
                         width={150}
                         height={250}
-                        alt={data?.title || ""}
+                        alt={getTitle(data)}
                         className=" w-36 h-auto rounded-lg max-sm:mx-auto"
                     />
                     <MovieInfoSide data={data} />
                 </div>
                 <TrailerBtn
                     videos={data?.videos?.results?.length ? data?.videos?.results : []}
-                    runtime={data?.runtime}
+                    runtime={hasProperty(data, "runtime") ? data.runtime : undefined}
                     language={data?.original_language}
                 />
 
@@ -84,5 +107,3 @@ const MovieDetail = () => {
         </>
     )
 }
-
-export default MovieDetail
