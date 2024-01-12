@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import Image from "next/image"
 
 // --types--
@@ -12,13 +13,15 @@ import MovieInfoSide from "./MovieInfoSide"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
 import LikeBtn from "@/components/shared/LikeBtn"
 import Casts from "./Casts"
-import ReviewCard from "./ReviewCard"
 import MoviesCarousel from "../MoviesCarousel"
 import { Separator } from "@/components/ui/separator"
-import { Suspense } from "react"
 import CarouselSkeleton from "../Skeletons/CarouselSkeleton"
+import Reviews from "./Reviews"
 
-const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail; reviews?: Review[] }) => {
+import { singleMovieDetail } from "@/lib/dummy"
+
+const MovieDetail = () => {
+    const data = singleMovieDetail
     return (
         <>
             <div className="sticky top-0 left-0 w-full h-fit">
@@ -62,19 +65,10 @@ const MovieDetail = ({ data, reviews }: { data: SingleMovieDetail; reviews?: Rev
 
                 <Separator className=" my-10" />
 
-                {reviews ? (
-                    <>
-                        <h1 className="title-bold">Top Reviews</h1>
-                        <div className="flex flex-col gap-8 mt-4">
-                            {reviews.map((review) => (
-                                <ReviewCard
-                                    key={review.id}
-                                    data={review}
-                                />
-                            ))}
-                        </div>
-                    </>
-                ) : null}
+                <h1 className="title-bold">Top Reviews</h1>
+                <Suspense fallback={<h1>Loading...</h1>}>
+                    <Reviews />
+                </Suspense>
 
                 <Separator className=" my-10" />
 
