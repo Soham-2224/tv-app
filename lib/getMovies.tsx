@@ -31,7 +31,6 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
     } catch (error) {
         console.log(error)
     }
-
 }
 
 export async function fetchCarouselData(type: "movie" | "tv", endpoint: keyof typeof ENDPOINT_KEYS, id?: number) {
@@ -85,3 +84,17 @@ export async function getSearchedMovies(term: string) {
     return data.results
 }
 
+export async function fetchDetails(type: "movie" | "tv", id: number) {
+    // let params = "?append_to_response=videos%2Ccredits&language=en-US"
+
+    // await new Promise((resolve) => setTimeout(resolve, 100000))
+
+    const url = new URL(`${BASE_PATH}/${type}/${id}`)
+
+    url.searchParams.set("append_to_response", "videos,credits")
+    url.searchParams.set("language", "en-US")
+
+    const data = await fetchFromTMDB(url)
+
+    return data?.results
+}
