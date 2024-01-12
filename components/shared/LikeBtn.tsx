@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
 
 // --types--
-import { Favourite } from "@/typings"
+import { Favourite, MovieOrTv } from "@/typings"
 
 // --icons--
 import { HeartIcon } from "lucide-react"
@@ -18,11 +18,11 @@ import useUserStore from "@/store/useUser"
 // --localstorage--
 import { useLocalStorage, writeStorage } from "@rehooks/local-storage"
 
-const LikeBtn = ({ data }: { data: Favourite }) => {
+const LikeBtn = ({ data, type }: { data: Favourite, type: MovieOrTv }) => {
     const router = useRouter()
     const pathname = usePathname()
     const storedUser = useUserStore((state) => state.email)
-    const [likedMovies] = useLocalStorage<Favourite[]>("likedMovies")
+    const [likedMovies] = useLocalStorage<Favourite[]>(type === "movie" ? "likedMovies" : "likedTvShows")
     const [isLiked, setIsLiked] = useState<boolean>(false)
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
 
     const handleLikeClick = () => {
         if (!storedUser.length) {
-            return toast("Log in to add a movie as a favorite.", {
+            return toast(`Log in to add a ${type === "movie" ? "movie" : "show"} as a favorite.`, {
                 action: {
                     label: "Login",
                     onClick: () => router.push("/login")
@@ -48,22 +48,26 @@ const LikeBtn = ({ data }: { data: Favourite }) => {
             ? currentLikedMovies?.filter((likedMovie) => likedMovie.id !== data.id)
             : [data, ...currentLikedMovies]
 
-        writeStorage("likedMovies", updatedLikedMovies)
+        writeStorage( type === "movie" ? "likedMovies" : "likedTvShows", updatedLikedMovies)
 
         if (isLiked) {
             if (pathname.includes("favourite")) {
                 toast("Movie removed from favourites", {
                     action: {
                         label: "Undo",
-                        onClick: () => writeStorage("likedMovies", [data, ...updatedLikedMovies])
+                        onClick: () =>
+                            writeStorage(type === "movie" ? "likedMovies" : "likedTvShows", [
+                                data,
+                                ...updatedLikedMovies
+                            ])
                     }
                 })
                 setIsLiked(true)
                 return
             }
-            toast.warning("Movie removed from favourites")
+            toast.warning(`${type === "movie" ? "movie" : "tv show"} removed from favourites`)
         } else {
-            toast.success("Movie added to favourites")
+            toast.success(`${type === "movie" ? "movie" : "tv show"} added to favourites`)
         }
         setIsLiked((prev) => !prev)
     }

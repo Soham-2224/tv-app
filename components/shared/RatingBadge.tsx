@@ -13,7 +13,7 @@ type Props = {
     classNames?: String
 }
 
-const RatingBadge = ({ rating, isStar = false, classNames }: Props) => {
+const RatingBadge = ({ rating = 0, isStar = false, classNames }: Props) => {
     return (
         <Badge
             variant="secondary"
