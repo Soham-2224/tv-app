@@ -7,10 +7,11 @@ import { GENRES } from "@/lib/constants"
 
 // --components--
 import RatingBadge from "@/components/shared/RatingBadge"
-import { Movie } from "@/typings"
+import { Movie, TV } from "@/typings"
 import getImagePath from "@/lib/getImagePath"
+import { getTitle } from "@/lib/utils"
 
-const SinglePosterColumn = ({ data } : {data : Movie | undefined}) => {
+const SinglePosterColumn = ({ data } : {data : Movie | TV}) => {
     const filteredGenres = GENRES.filter((genre) => data?.genre_ids?.includes(genre.id))
         .map((genre) => genre.name)
         .join(", ")
@@ -26,12 +27,12 @@ const SinglePosterColumn = ({ data } : {data : Movie | undefined}) => {
                 placeholder="blur"
                 width={70}
                 height={105}
-                alt={data?.title || ""}
+                alt={getTitle(data)}
                 className="rounded-md"
             />
             <div className="flex flex-col justify-between gap-4">
                 <div className="">
-                    <h1 className=" line-clamp-2 group-hover:text-primary text-sm font-semibold">{data?.title || data?.name}</h1>
+                    <h1 className=" line-clamp-2 group-hover:text-primary text-sm font-semibold">{getTitle(data)}</h1>
                     <p className="line-clamp-1 text-xs font-normal text-muted-foreground">{filteredGenres}</p>
                 </div>
                 <RatingBadge rating={data?.vote_average || 0} />
