@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import LiteYouTubeEmbed from "react-lite-youtube-embed"
 
-const TrailerBtn = ({ videos, runtime, language }: { videos: Video[]; runtime: number, language: string }) => {
+const TrailerBtn = ({ videos, runtime, language }: { videos: Video[]; runtime?: number, language: string }) => {
     const searchParams = useSearchParams()
 
     const watch = searchParams.get("watch")
@@ -71,9 +71,9 @@ const TrailerBtn = ({ videos, runtime, language }: { videos: Video[]; runtime: n
                 </DialogContent>
             </Dialog>
             <div className="flex item-center gap-2 h-5">
-                <p className="text-base font-medium">{formatRuntime(runtime)}</p>
+                {runtime ? <p className="text-base font-medium">{formatRuntime(runtime)}</p> : null}
                 <Separator orientation="vertical" />
-                <p className="text-base font-medium">{language.toUpperCase()}</p>
+                <p className="text-base font-medium">{ language ? language.toUpperCase() : "EN"}</p>
             </div>
         </div>
     )
