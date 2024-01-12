@@ -27,10 +27,10 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
         id: data?.id,
         original_title: data?.original_title,
         poster_path: data?.poster_path,
-        release_date: data?.release_date,
-        first_air_date: data?.first_air_date,
-        name: data?.name,
-        title: data?.title,
+        release_date: data?.release_date || "",
+        first_air_date: data?.first_air_date || "",
+        name: data?.name || "",
+        title: data?.title || "",
         vote_average: data?.vote_average
     }
 
