@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Favourite, Movie, TV } from "@/typings"
 
 // --utils--
-import { cn } from "@/lib/utils"
+import { cn, getConditionalProperty, getTitle, hasProperty } from "@/lib/utils"
 import getImagePath from "@/lib/getImagePath"
 
 // --components--
@@ -22,17 +22,27 @@ type Props = {
 }
 
 const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
-    const likeBtnProps = {
+    const baseProps = {
         backdrop_path: data?.backdrop_path,
         id: data?.id,
-        original_title: data?.original_title,
         poster_path: data?.poster_path,
-        release_date: data?.release_date || "",
-        first_air_date: data?.first_air_date || "",
-        name: data?.name || "",
-        title: data?.title || "",
         vote_average: data?.vote_average
     }
+    const likeBtnProps = !isTv
+        ? {
+              ...baseProps,
+              original_title: getConditionalProperty(data, "original_title"),
+              release_date: getConditionalProperty(data, "release_date"),
+              title: getConditionalProperty(data, "title")
+          }
+        : {
+              ...baseProps,
+              first_air_date: getConditionalProperty(data, "first_air_date"),
+              name: getConditionalProperty(data, "name"),
+              original_name: getConditionalProperty(data, "original_name")
+          }
+
+          const releasedDate : string = hasProperty(data, "release_date") ? data?.release_date : data?.first_air_date
 
     return (
         <div className=" hover:scale-95 overflow-hidden group transition-transform duration-300 relative">
@@ -53,17 +63,23 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                             isStar={!isLarge}
                         />
                     ) : (
-                        <LikeBtn data={likeBtnProps} />
+                        <LikeBtn
+                            data={likeBtnProps}
+                            type={isTv ? "tv" : "movie"}
+                        />
                     )}
-                    {withLikeIcon ? <LikeBtn data={likeBtnProps} /> : null}
+                    {withLikeIcon ? (
+                        <LikeBtn
+                            data={likeBtnProps}
+                            type={isTv ? "tv" : "movie"}
+                        />
+                    ) : null}
                 </div>
                 <div className="flex justify-between items-end gap-2">
                     <div>
-                        <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>
-                            {data?.title || data?.name}
-                        </h1>
+                        <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{getTitle(data)}</h1>
                         <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
-                            {new Date(data?.release_date || data?.first_air_date).getFullYear() || ""}
+                            {new Date(releasedDate).getFullYear() || ""}
                         </h2>
                         {isLarge ? (
                             <div className="mt-2">
