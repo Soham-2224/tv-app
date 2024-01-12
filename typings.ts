@@ -4,27 +4,24 @@ export type CommonMovieTv = {
     genre_ids: number[]
     id: number
     original_language: string
-    original_title: string
     overview: string
     popularity: number
     poster_path?: string | null
     video: boolean
     vote_average: number
     vote_count: number
-    title: string
-    release_date: string
-    first_air_date: string
-    name: string
 }
 
 export type Movie = CommonMovieTv & {
-    first_air_date?: string
-    name?: string
+    title: string | null
+    original_title: string | null
+    release_date: string | null
 }
 
 export type TV = CommonMovieTv & {
-    title?: string
-    release_date?: string
+    first_air_date: string | null
+    name: string | null
+    original_name: string | null
 }
 
 export type SearchResults = {
@@ -34,18 +31,14 @@ export type SearchResults = {
     total_results: number
 }
 
-export type Favourite = Pick<
-    CommonMovieTv,
-    | "backdrop_path"
-    | "id"
-    | "original_title"
-    | "poster_path"
-    | "release_date"
-    | "title"
-    | "vote_average"
-    | "name"
-    | "first_air_date"
->
+export type ReviewSearchResults = Omit<SearchResults, "results"> & {
+    results: Review[]
+    id: number
+}
+
+export type Favourite =
+    | Pick<Movie, "backdrop_path" | "id" | "poster_path" | "vote_average" | "original_title" | "title" | "release_date">
+    | Pick<TV, "backdrop_path" | "id" | "poster_path" | "vote_average" | "original_name" | "name" | "first_air_date">
 
 export type Genre = {
     id: number
@@ -108,8 +101,6 @@ export type SingleMovieDetail = Omit<Movie, "genre_ids"> & {
         cast: Actor[]
         crew: Crew[]
     }
-    first_air_date?: string
-    name?: string
 }
 
 export type Actor = {
@@ -157,13 +148,12 @@ export type SpokenLanguage = {
     name: string
 }
 
-
 // ---------------Single-TV-Details---------------------
 
 export type SingleTvDetail = Omit<TV, "genre_ids"> & {
     created_by?: CreatedByEntity[] | null
     episode_run_time?: null[] | null
-    genres?: Genres[] | null
+    genres?: Genre[] | null
     in_production: boolean
     languages?: string[] | null
     last_air_date: string
