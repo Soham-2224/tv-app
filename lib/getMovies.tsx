@@ -1,4 +1,4 @@
-import { SearchResults } from "@/typings"
+import { MovieOrTv, ReviewSearchResults, SearchResults, SingleMovieDetail, SingleTvDetail } from "@/typings"
 
 const BASE_PATH = "https://api.themoviedb.org/3"
 
@@ -33,7 +33,7 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
     }
 }
 
-export async function fetchCarouselData(type: "movie" | "tv", endpoint: keyof typeof ENDPOINT_KEYS, id?: number) {
+export async function fetchCarouselData(type: MovieOrTv, endpoint: keyof typeof ENDPOINT_KEYS, id?: number) {
     let endpointKey = ENDPOINT_KEYS[endpoint]
 
     if (endpoint === "similar" && id) {
@@ -84,9 +84,7 @@ export async function getSearchedMovies(term: string) {
     return data.results
 }
 
-export async function fetchDetails(type: "movie" | "tv", id: number) {
-    // let params = "?append_to_response=videos%2Ccredits&language=en-US"
-
+export async function fetchDetails(type: MovieOrTv, id: string) {
     // await new Promise((resolve) => setTimeout(resolve, 100000))
 
     const url = new URL(`${BASE_PATH}/${type}/${id}`)
@@ -94,7 +92,15 @@ export async function fetchDetails(type: "movie" | "tv", id: number) {
     url.searchParams.set("append_to_response", "videos,credits")
     url.searchParams.set("language", "en-US")
 
-    const data = await fetchFromTMDB(url)
+    const data = (await fetchFromTMDB(url)) as SingleMovieDetail | SingleTvDetail
+
+    return data
+}
+
+export async function fetchReviews(type: MovieOrTv, id: number) {
+    const url = new URL(`${BASE_PATH}/${type}/${id}/reviews`)
+
+    const data = (await fetchFromTMDB(url)) as ReviewSearchResults
 
     return data?.results
 }

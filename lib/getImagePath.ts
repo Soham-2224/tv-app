@@ -1,8 +1,8 @@
-import { Actor, Movie } from "@/typings";
+import { Actor, Movie, TV } from "@/typings";
 import { BASE_IMAGE_PATH } from "./constants";
 
 type Props = {
-    data?: Partial<Movie> & Partial<Actor>
+    data?: Partial<Movie> | Partial<TV> & Partial<Actor>
     isLarge?: boolean
     isPoster?: boolean
 }
