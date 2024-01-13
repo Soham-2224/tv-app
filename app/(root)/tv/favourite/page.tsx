@@ -26,7 +26,7 @@ export default function Page() {
         <main className=" p-4 md:p-6">
             <h1 className="title-bold">Favourite TV Shows</h1>
             <div className="card-grid">
-                {likedShows?.reverse().map((movie) => (
+                {likedShows?.map((movie) => (
                     <CarouselCard
                         isTv
                         withLikeIcon

@@ -78,6 +78,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                 <div className="flex justify-between items-end gap-2">
                     <div>
                         <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{getTitle(data)}</h1>
+                        <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{data?.id}</h1>
                         <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
                             {new Date(releasedDate).getFullYear() || ""}
                         </h2>
