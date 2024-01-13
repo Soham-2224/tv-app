@@ -15,7 +15,7 @@ export function hasProperty<T extends {}, K extends PropertyKey>(obj: T, key: K)
 // }
 
 export function getConditionalProperty<T extends object, K extends string>(obj: T, key: K): any {
-    return (obj as any)[key] || ""
+    return obj ? (obj as any)[key] || "" : ""
 }
 
 export function getTitle(data: SingleMovieDetail | SingleTvDetail | Favourite) {

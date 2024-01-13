@@ -20,6 +20,8 @@ const LabelValue = ({ label, children }: { label: string; children: any }) => {
 const MovieInfoSide = ({ data }: { data: SingleMovieDetail | SingleTvDetail }) => {
 
     const budget = hasProperty(data, "budget")
+    const numberOfEp = hasProperty(data, "number_of_episodes")
+    const numberOfSeasons = hasProperty(data, "number_of_seasons")
 
     const getMoneyValue = (value: number): string => {
         return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(
@@ -49,6 +51,8 @@ const MovieInfoSide = ({ data }: { data: SingleMovieDetail | SingleTvDetail }) =
                     <LabelValue label="Status">{data?.status}</LabelValue>
                     <LabelValue label="Released on">{ hasProperty(data, "release_date") ? data?.release_date : data?.first_air_date}</LabelValue>
                     {budget ? <LabelValue label="Budget">{getMoneyValue(data.budget)}</LabelValue> : null}
+                    {numberOfEp ? <LabelValue label="Episodes">{data.number_of_episodes}</LabelValue> : null}
+                    {numberOfSeasons ? <LabelValue label="Seasons">{data.number_of_seasons}</LabelValue> : null}
                 </div>
                 <div className="flex gap-1 items-center">
                     <CircularProgress vote={data?.vote_average} />

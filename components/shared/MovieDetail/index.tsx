@@ -95,7 +95,7 @@ export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv
 
                 <Separator className=" my-10" />
 
-                <h1 className=" title-bold mb-4">Similar Movies</h1>
+                <h1 className=" title-bold mb-4">Similar {type === "movie" ? "Movies" : "Tv shows"}</h1>
                 <Suspense fallback={<CarouselSkeleton />}>
                     <MoviesCarousel
                         type={type}
