@@ -275,7 +275,7 @@ hanko-profile {
   /* Color Scheme */
   --color: hsl(var(--foreground));
   --color-shade-1: hsl(var(--muted-foreground));
-  --color-shade-2: hsl(var(--foreground));
+  --color-shade-2: hsl(var(--muted));
 
   --brand-color: hsl(var(--primary));
   --brand-color-shade-1: #f14141;

@@ -25,6 +25,8 @@ const LikeBtn = ({ data, type }: { data: Favourite, type: MovieOrTv }) => {
     const [likedMovies] = useLocalStorage<Favourite[]>(type === "movie" ? "likedMovies" : "likedTvShows")
     const [isLiked, setIsLiked] = useState<boolean>(false)
 
+    const movieOrTvMessage = type === "movie" ? "Movie" : "Tv show"
+
     useEffect(() => {
         if (likedMovies) {
             const isMovieLiked = likedMovies.some((likedMovie) => likedMovie.id === data.id)
@@ -52,7 +54,7 @@ const LikeBtn = ({ data, type }: { data: Favourite, type: MovieOrTv }) => {
 
         if (isLiked) {
             if (pathname.includes("favourite")) {
-                toast("Movie removed from favourites", {
+                toast(`${movieOrTvMessage} removed from favourites`, {
                     action: {
                         label: "Undo",
                         onClick: () =>
@@ -65,9 +67,9 @@ const LikeBtn = ({ data, type }: { data: Favourite, type: MovieOrTv }) => {
                 setIsLiked(true)
                 return
             }
-            toast.warning(`${type === "movie" ? "movie" : "tv show"} removed from favourites`)
+            toast.warning(`${movieOrTvMessage} removed from favourites`)
         } else {
-            toast.success(`${type === "movie" ? "movie" : "tv show"} added to favourites`)
+            toast.success(`${movieOrTvMessage} added to favourites`)
         }
         setIsLiked((prev) => !prev)
     }
