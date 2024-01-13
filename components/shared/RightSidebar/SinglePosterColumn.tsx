@@ -7,18 +7,18 @@ import { GENRES } from "@/lib/constants"
 
 // --components--
 import RatingBadge from "@/components/shared/RatingBadge"
-import { Movie, TV } from "@/typings"
+import { Movie, MovieOrTv, TV } from "@/typings"
 import getImagePath from "@/lib/getImagePath"
 import { getTitle } from "@/lib/utils"
 
-const SinglePosterColumn = ({ data } : {data : Movie | TV}) => {
+const SinglePosterColumn = ({ data, type } : {data : Movie | TV, type: MovieOrTv}) => {
     const filteredGenres = GENRES.filter((genre) => data?.genre_ids?.includes(genre.id))
         .map((genre) => genre.name)
         .join(", ")
 
     return (
         <Link
-            href={`/movies/${data?.id}`}
+            href={`/${type === "movie" ? "movies" : "tv"}/${data?.id}`}
             className="flex items-center gap-4 max-w-full h-auto group"
         >
             <Image
