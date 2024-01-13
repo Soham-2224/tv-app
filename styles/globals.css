@@ -268,3 +268,25 @@ html {
     opacity: 0;
     pointer-events: none;
 }
+
+/* -----Hanko-auth-styles----- */
+hanko-auth,
+hanko-profile {
+  /* Color Scheme */
+  --color: hsl(var(--foreground));
+  --color-shade-1: hsl(var(--muted-foreground));
+  --color-shade-2: hsl(var(--foreground));
+
+  --brand-color: hsl(var(--primary));
+  --brand-color-shade-1: #f14141;
+  --brand-contrast-color: hsl(var(--primary-foreground));
+
+  --background-color: hsl(var(--secondary));
+  --error-color: hsl(var(--destructive));
+  --link-color: #506cf0;
+
+  /* Border Styles */
+  --border-radius: var(--radius);
+  --border-style: solid;
+  --border-width: 1px;
+}
