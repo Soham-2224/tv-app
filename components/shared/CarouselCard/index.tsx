@@ -13,6 +13,7 @@ import RatingBadge from "@/components/shared/RatingBadge"
 import LikeBtn from "@/components/shared/LikeBtn"
 import { Button } from "@/components/ui/button"
 import { PlayIcon } from "lucide-react"
+import Link from "next/link"
 
 type Props = {
     isLarge?: boolean
@@ -21,7 +22,7 @@ type Props = {
     withLikeIcon?: boolean
 }
 
-const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
+const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
     const baseProps = {
         backdrop_path: data?.backdrop_path,
         id: data?.id,
@@ -51,7 +52,7 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                 height={100}
                 blurDataURL="https://placehold.co/50x50/EEE/31343C/webp"
                 placeholder="blur"
-                className="embla__slide__img"
+                className="embla__slide__img select-none"
                 src={getImagePath({ data, isLarge: true })}
                 alt="Your alt text"
             />
@@ -76,9 +77,11 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                     ) : null}
                 </div>
                 <div className="flex justify-between items-end gap-2">
-                    <div>
-                        <h1 className={cn("text-white font-semibold", isLarge && "text-2xl")}>{getTitle(data)}</h1>
-                        <h2 className={cn("text-white/60 font-medium", isLarge && "text-xl")}>
+                    <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}`}>
+                        <h1 className={cn("text-white 2xl:text-3xl font-semibold", isLarge && "text-2xl 2xl:text-4xl")}>
+                            {getTitle(data)}
+                        </h1>
+                        <h2 className={cn("text-white/60 2xl:text-2xl font-medium", isLarge && "text-xl 2xl:text-3xl")}>
                             {new Date(releasedDate).getFullYear() || ""}
                         </h2>
                         {isLarge ? (
@@ -89,18 +92,20 @@ const CarouselCard = ({ isLarge, data, isTv, withLikeIcon }: Props) => {
                                 />
                             </div>
                         ) : null}
-                    </div>
-                    <Button className={cn("bg-primary/75 px-6", !isLarge && "rounded-full p-3")}>
-                        {isLarge ? (
-                            "Trailer"
-                        ) : (
-                            <PlayIcon
-                                size={18}
-                                color="white"
-                                className=" fill-white"
-                            />
-                        )}
-                    </Button>
+                    </Link>
+                    <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}?watch=true`}>
+                        <Button className={cn("bg-primary/75 px-6 2xl:px-7 2xl:py-10", !isLarge && "rounded-full p-3")}>
+                            {isLarge ? (
+                                "Trailer"
+                            ) : (
+                                <PlayIcon
+                                    size={18}
+                                    color="white"
+                                    className=" fill-white 2xl:w-8 2xl:h-8"
+                                />
+                            )}
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>
