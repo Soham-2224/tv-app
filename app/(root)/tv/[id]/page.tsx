@@ -7,7 +7,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
         <main className="relative">
             <div className="pb-4 flex flex-col relative">
-                <MovieDetail type="movie" id={id} />
+                <MovieDetail type="tv" id={id} />
             </div>
         </main>
     )
