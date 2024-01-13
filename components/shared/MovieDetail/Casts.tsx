@@ -28,24 +28,32 @@ const Casts = ({ data }: { data: { cast: Actor[]; crew: Crew[] } }) => {
                         <DialogHeader className=" title-bold">Casts</DialogHeader>
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-                                {data?.cast?.map((cast) => (
-                                    <CastCard
-                                        key={`${cast?.id}${cast?.name}`}
-                                        data={cast}
-                                    />
-                                ))}
+                                {data?.cast.length ? (
+                                    data?.cast?.map((cast) => (
+                                        <CastCard
+                                            key={`${cast?.id}${cast?.name}`}
+                                            data={cast}
+                                        />
+                                    ))
+                                ) : (
+                                    <h1>No results found</h1>
+                                )}
                             </div>
                         }
                         <Separator className=" mt-10" />
                         <DialogHeader className=" title-bold mt-10">Crew</DialogHeader>
                         {
                             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
-                                {data?.crew?.map((crew) => (
-                                    <CastCard
-                                        key={`${crew?.id}${crew?.name}`}
-                                        data={crew}
-                                    />
-                                ))}
+                                {data?.crew.length ? (
+                                    data?.crew?.map((crew) => (
+                                        <CastCard
+                                            key={`${crew?.id}${crew?.name}`}
+                                            data={crew}
+                                        />
+                                    ))
+                                ) : (
+                                    <h1>No results found</h1>
+                                )}
                             </div>
                         }
                     </ScrollArea>

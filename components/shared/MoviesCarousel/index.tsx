@@ -24,10 +24,14 @@ export default async function MoviesCarousel(Props: Omit<CarouselProps, "data"> 
 
     return (
         <div className={cn("embla", isLarge && "isLarge")}>
-            <CarouselContainer
-                {...Props}
-                data={fetchedData}
-            />
+            {
+                fetchedData?.length ? (
+                    <CarouselContainer
+                        {...Props}
+                        data={fetchedData}
+                    />
+                ) : <h1>No results found</h1>
+            }
         </div>
     )
 }
