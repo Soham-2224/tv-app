@@ -23,7 +23,7 @@ import { fetchDetails } from "@/lib/getMovies"
 import { getConditionalProperty, getTitle, hasProperty } from "@/lib/utils"
 
 export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv}) {
-    const data = await fetchDetails("movie", id)
+    const data = await fetchDetails(type, id)
 
      const baseProps = {
          backdrop_path: data?.backdrop_path,
@@ -90,7 +90,7 @@ export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv
 
                 <h1 className="title-bold">Top Reviews</h1>
                 <Suspense fallback={<h1>Loading...</h1>}>
-                    <Reviews />
+                    <Reviews type={type} id={data?.id} />
                 </Suspense>
 
                 <Separator className=" my-10" />
@@ -98,7 +98,7 @@ export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv
                 <h1 className=" title-bold mb-4">Similar Movies</h1>
                 <Suspense fallback={<CarouselSkeleton />}>
                     <MoviesCarousel
-                        type="movie"
+                        type={type}
                         endpoint="similar"
                         id={data?.id}
                     />
