@@ -3,7 +3,7 @@ import Link from "next/link"
 import React from "react"
 
 // --constants--
-import { GENRES } from "@/lib/constants"
+import { MOVIE_GENRES, TV_GENRES } from "@/lib/constants"
 
 // --components--
 import RatingBadge from "@/components/shared/RatingBadge"
@@ -12,7 +12,10 @@ import getImagePath from "@/lib/getImagePath"
 import { getTitle } from "@/lib/utils"
 
 const SinglePosterColumn = ({ data, type } : {data : Movie | TV, type: MovieOrTv}) => {
-    const filteredGenres = GENRES.filter((genre) => data?.genre_ids?.includes(genre.id))
+
+    let genresToFilter = type === "movie" ? MOVIE_GENRES : TV_GENRES
+
+    const filteredGenres = genresToFilter.filter((genre) => data?.genre_ids?.includes(genre.id))
         .map((genre) => genre.name)
         .join(", ")
 
