@@ -77,16 +77,16 @@ const LikeBtn = ({ data, type }: { data: Favourite, type: MovieOrTv }) => {
     return (
         <button
             onClick={handleLikeClick}
-            className=" p-2 2xl:p-4 bg-black/50 rounded-full"
+            className=" p-2 2xl:p-3 bg-black/50 rounded-full"
         >
             {isLiked ? (
                 <HeartIcon
-                    className=" text-primary fill-primary 2xl:w-10 2xl:h-10"
+                    className=" text-primary fill-primary 2xl:w-8 2xl:h-8"
                     size={25}
                 />
             ) : (
                 <HeartIcon
-                    className=" text-white 2xl:w-10 2xl:h-10"
+                    className=" text-white 2xl:w-8 2xl:h-8"
                     size={25}
                 />
             )}

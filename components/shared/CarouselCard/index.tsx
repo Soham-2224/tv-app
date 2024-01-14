@@ -78,10 +78,10 @@ const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
                 </div>
                 <div className="flex justify-between items-end gap-2">
                     <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}`}>
-                        <h1 className={cn("text-white 2xl:text-3xl font-semibold", isLarge && "text-2xl 2xl:text-4xl")}>
+                        <h1 className={cn("text-white 2xl:text-2xl font-semibold", isLarge && "text-2xl 2xl:text-4xl")}>
                             {getTitle(data)}
                         </h1>
-                        <h2 className={cn("text-white/60 2xl:text-2xl font-medium", isLarge && "text-xl 2xl:text-3xl")}>
+                        <h2 className={cn("text-white/60 2xl:text-xl font-medium", isLarge && "text-xl 2xl:text-3xl")}>
                             {new Date(releasedDate).getFullYear() || ""}
                         </h2>
                         {isLarge ? (
@@ -94,14 +94,14 @@ const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
                         ) : null}
                     </Link>
                     <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}?watch=true`}>
-                        <Button className={cn("bg-primary/75 px-6 2xl:px-7 2xl:py-10", !isLarge && "rounded-full p-3")}>
+                        <Button className={cn("bg-primary/75 px-6 2xl:px-5 2xl:py-8", !isLarge && "rounded-full p-3")}>
                             {isLarge ? (
                                 "Trailer"
                             ) : (
                                 <PlayIcon
                                     size={18}
                                     color="white"
-                                    className=" fill-white 2xl:w-8 2xl:h-8"
+                                    className=" fill-white 2xl:w-7 2xl:h-7"
                                 />
                             )}
                         </Button>
