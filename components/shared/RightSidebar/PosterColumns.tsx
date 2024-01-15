@@ -13,7 +13,7 @@ export default async function PosterColumns({ type }: { type: MovieOrTv }) {
 
     return (
         <div className="flex flex-col gap-3 mt-4">
-            {fetchedData?.slice(0, 4).map((movie) => (
+            {fetchedData?.map((movie) => (
                 <SinglePosterColumn
                 type={type}
                     key={movie.id}
