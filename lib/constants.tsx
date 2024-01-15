@@ -228,3 +228,46 @@ export const TV_GENRES: Genre[] = [
 ]
 
 export const BASE_IMAGE_PATH = "https://image.tmdb.org/t/p/"
+
+export const DISCOVER_FILTER_OPTIONS = [
+    {
+        value: "popularity.asc",
+        name: "Popularity asc"
+    },
+    {
+        value: "popularity.desc",
+        name: "Popularity desc"
+    },
+    {
+        value: "revenue.asc",
+        name: "Revenue asc"
+    },
+    {
+        value: "revenue.desc",
+        name: "Revenue desc"
+    },
+    {
+        value: "primary_release_date.asc",
+        name: "Release date asc"
+    },
+    {
+        value: "primary_release_date.desc",
+        name: "Release date desc"
+    },
+    {
+        value: "vote_average.asc",
+        name: "Vote asc"
+    },
+    {
+        value: "vote_average.desc",
+        name: "Vote desc"
+    },
+    {
+        value: "vote_count.asc",
+        name: "Vote count asc"
+    },
+    {
+        value: "vote_count.desc",
+        name: "Vote count desc"
+    }
+]
