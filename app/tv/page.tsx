@@ -13,7 +13,7 @@ export default async function Page() {
                     <Suspense fallback={<CarouselSkeleton isLarge />}>
                         <MoviesCarousel
                             isLarge
-                            // autoplay
+                            autoplay
                             type="tv"
                             loop
                             endpoint="airingToday"
