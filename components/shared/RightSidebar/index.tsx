@@ -17,7 +17,7 @@ export default function RightSidebar({type} : {type: MovieOrTv}) {
                 <Suspense fallback={<PosterColumnSkeleton />}>
                     <PosterColumns type={type} />
                 </Suspense>
-                <Link href="/">
+                <Link href={`/${type === "movie" ? "movies" : "tv"}/discover`}>
                     <Button className=" block mx-auto mt-4 px-10">See More</Button>
                 </Link>
             </div>

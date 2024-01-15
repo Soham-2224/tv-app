@@ -62,6 +62,8 @@ export async function fetchDiscoverMovies({
     to_date: string | undefined
     sort_by: string | undefined
 }) {
+    // await new Promise((resolve) => setTimeout(resolve, 100000))
+
     const url = new URL(`https://api.themoviedb.org/3/discover/${type}`)
 
     let dateParamKey = type === "movie" ? "release_date" : "first_air_date"
