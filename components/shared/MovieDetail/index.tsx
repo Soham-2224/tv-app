@@ -17,13 +17,12 @@ import CarouselSkeleton from "../Skeletons/CarouselSkeleton"
 import LikeBtn from "@/components/shared/LikeBtn"
 import { Separator } from "@/components/ui/separator"
 import BackArrowBtn from "@/components/shared/BackArrowBtn"
+import ErrorFetching from "../ErrorFetching"
 
 // --utils--
 import { fetchDetails } from "@/lib/getMovies"
 import { getConditionalProperty, getTitle, hasProperty } from "@/lib/utils"
-import { Button } from '@/components/ui/button'
-import ErrorFetching from "../ErrorFetching"
-import MovieDetailsSkeleton from "../Skeletons/MovieDetailsSkeleton"
+
 
 export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv}) {
     const data = await fetchDetails(type, id)
@@ -85,7 +84,7 @@ export default async function MovieDetail({id, type}:{id:string, type: MovieOrTv
                 />
 
                 <h1 className=" title-bold">Overview</h1>
-                <p className=" text-base font-medium mt-2">{ data?.overview.length ? data?.overview : "No overview provided"}</p>
+                <p className=" text-base font-medium mt-2">{ data?.overview?.length ? data?.overview : "No overview provided"}</p>
 
                 <Separator className=" my-10" />
 
