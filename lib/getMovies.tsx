@@ -49,17 +49,30 @@ export async function fetchCarouselData(type: MovieOrTv, endpoint: keyof typeof 
     return data?.results
 }
 
-export async function fetchDiscoverMovies( {type, genre, from_date, to_date} : {type: MovieOrTv ,genre: string | undefined, from_date: string | undefined, to_date: string | undefined}) {
+export async function fetchDiscoverMovies({
+    type,
+    genre,
+    from_date,
+    to_date,
+    sort_by
+}: {
+    type: MovieOrTv
+    genre: string | undefined
+    from_date: string | undefined
+    to_date: string | undefined
+    sort_by: string | undefined
+}) {
     const url = new URL(`https://api.themoviedb.org/3/discover/${type}`)
-    
+
     let dateParamKey = type === "movie" ? "release_date" : "first_air_date"
 
     genre && url.searchParams.set("with_genres", genre)
     from_date && url.searchParams.set(`${dateParamKey}.gte`, from_date)
     to_date && url.searchParams.set(`${dateParamKey}.lte`, to_date)
-    
+    sort_by && url.searchParams.set("sort_by", sort_by)
+
     console.log(url.toString())
-    const data = (await fetchFromTMDB(url)) as SearchResults 
+    const data = (await fetchFromTMDB(url)) as SearchResults
 
     return data?.results
 }
