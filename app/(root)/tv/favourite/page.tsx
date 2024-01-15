@@ -3,7 +3,7 @@
 // --components--
 import CarouselCard from "@/components/shared/CarouselCard"
 import CenterLoginBtn from "@/components/shared/CenterLoginBtn"
-import Loading from "./loading"
+import CardGridSkeleton from "@/components/shared/Skeletons/CardGridSkeleton"
 
 // --zustand--
 import useUserStore from "@/store/useUser"
@@ -18,22 +18,20 @@ export default function Page() {
     const { email, loading, error } = useUserStore((state) => state)
     const [likedShows] = useLocalStorage<Favourite[]>("likedTvShows")
 
-    if (loading) return <Loading />
-
     if (error) return <CenterLoginBtn />
 
     return (
         <main className=" p-4 md:p-6">
             <h1 className="title-bold">Favourite TV Shows</h1>
             <div className="card-grid">
-                {likedShows?.map((movie) => (
+                {loading ? likedShows?.map((movie) => (
                     <CarouselCard
                         isTv
                         withLikeIcon
                         key={movie.id}
                         data={movie}
                     />
-                ))}
+                )) : <CardGridSkeleton />}
             </div>
         </main>
     )

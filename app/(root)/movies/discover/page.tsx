@@ -7,6 +7,7 @@ import { GenreDropDown } from "@/components/shared/GenreDropDown"
 import { DatePicker } from "@/components/ui/DatePicker"
 import { Button } from "@/components/ui/button"
 import DiscoverFilter from "@/components/shared/DiscoverFilter"
+import CardGridSkeleton from "@/components/shared/Skeletons/CardGridSkeleton"
 
 export type DiscoverSearchParams = {
     searchParams: { [key: string]: string | undefined }
@@ -41,8 +42,8 @@ export default function Page({ searchParams }: DiscoverSearchParams) {
                 <DiscoverFilter type="movie" />
             </div>
             <div className="card-grid mt-8">
-                <Suspense fallback={<h1>Loading...</h1>}>
-                    <DiscoverResults searchParams={searchParams} />
+                <Suspense fallback={<CardGridSkeleton />}>
+                    <DiscoverResults type="movie" searchParams={searchParams} />
                 </Suspense>
             </div>
         </main>
