@@ -30,7 +30,7 @@ function SearchInput() {
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof formSchema>) {
         form.reset()
-        router.push(`${pathname.includes("movies") ? "movies" : "tv"}/search/${values.input}`)
+        router.push(`/${pathname.includes("movies") ? "movies" : "tv"}/search/${values.input}`)
     }
 
     return (
