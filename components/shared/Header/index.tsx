@@ -2,8 +2,8 @@ import React from "react"
 import Image from "next/image"
 
 // --components--
-import { Input } from "@/components/ui/input"
 import { ModeToggle } from "@/components/ui/modeToggle"
+import SearchInput from "@/components/shared/SearchInput"
 import Menu from "./Menu"
 import NavLinks from "./NavLinks"
 
@@ -25,10 +25,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className=" flex-1 justify-end flex gap-4">
-                    <Input
-                        placeholder="Search movies, tv shows..."
-                        className=" hidden md:inline-flex max-w-xs lg:hover:max-w-xl lg:focus:max-w-xl transition-all duration-100 ease-linear"
-                    />
+                    <SearchInput />
                     <div className="flex gap-2">
                         <ModeToggle />
                         <div className="lg:hidden">
