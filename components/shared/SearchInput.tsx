@@ -37,7 +37,7 @@ function SearchInput() {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-8 hidden md:inline-flex w-full max-w-xs lg:hover:max-w-xl lg:focus-within:max-w-xl transition-all duration-100 ease-linear"
+                className="space-y-8 w-full"
             >
                 <FormField
                     control={form.control}

@@ -25,7 +25,9 @@ const Header = () => {
                     </div>
                 </div>
                 <div className=" flex-1 justify-end flex gap-4">
-                    <SearchInput />
+                    <div className="hidden md:inline-flex w-full max-w-xs lg:hover:max-w-xl lg:focus-within:max-w-xl transition-all duration-100 ease-linear">
+                        <SearchInput />
+                    </div>
                     <div className="flex gap-2">
                         <ModeToggle />
                         <div className="lg:hidden">
