@@ -24,6 +24,13 @@ export function DatePicker({ className, type }: React.HTMLAttributes<HTMLDivElem
     })
 
     useEffect(() => {
+        // Reset the DatePicker when the URL changes and the date parameters are absent
+        if (!from_date && !to_date) {
+            setDate({ from: undefined, to: undefined })
+        }
+    }, [from_date, to_date])
+
+    useEffect(() => {
 
         if (!date?.from || !date?.to) return
 
