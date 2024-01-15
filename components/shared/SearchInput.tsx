@@ -29,10 +29,7 @@ function SearchInput() {
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
-
+        form.reset()
         router.push(`${pathname.includes("movies") ? "movies" : "tv"}/search/${values.input}`)
     }
 

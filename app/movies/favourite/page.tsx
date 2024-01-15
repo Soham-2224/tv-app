@@ -26,7 +26,7 @@ export default function Page() {
         <main className=" p-4 md:p-6">
             <h1 className="title-bold">Favourite Movies</h1>
             <div className="card-grid">
-                {loading ? likedMovies?.map((movie) => (
+                {!loading ? likedMovies?.map((movie) => (
                     <CarouselCard
                         withLikeIcon
                         key={movie.id}
