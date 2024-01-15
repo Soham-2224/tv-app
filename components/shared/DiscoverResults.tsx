@@ -1,4 +1,4 @@
-import { DiscoverSearchParams } from "@/app/movies/discover/page"
+import { DiscoverSearchParams } from "@/app/(root)/movies/discover/page"
 
 // --components--
 import CarouselCard from "./CarouselCard"
@@ -19,7 +19,7 @@ export default async function DiscoverResults({ searchParams, type}: DiscoverSea
     return data?.map((movie) => (
         <div className=" w-full ">
             <CarouselCard
-                isTv
+                isTv={type === "tv"}
                 withLikeIcon
                 key={movie.id}
                 data={movie}
