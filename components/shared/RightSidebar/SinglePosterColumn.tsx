@@ -21,7 +21,7 @@ const SinglePosterColumn = ({ data, type } : {data : Movie | TV, type: MovieOrTv
 
     return (
         <Link
-            href={`/${type === "movie" ? "movies" : "tv"}/${data?.id}`}
+            href={`/${type === "movie" ? "movies" : "tv"}/details/${data?.id}`}
             className="flex items-center gap-4 max-w-full h-auto group"
         >
             <Image

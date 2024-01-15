@@ -1,4 +1,4 @@
-import { DiscoverSearchParams } from "@/app/(root)/movies/discover/page"
+import { DiscoverSearchParams } from "@/app/movies/discover/page"
 
 // --components--
 import CarouselCard from "./CarouselCard"

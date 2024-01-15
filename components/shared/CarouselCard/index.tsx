@@ -77,7 +77,7 @@ const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
                     ) : null}
                 </div>
                 <div className="flex justify-between items-end gap-2">
-                    <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}`}>
+                    <Link href={`/${isTv ? "tv" : "movies"}/details/${data?.id}`}>
                         <h1 className={cn("text-white 2xl:text-2xl font-semibold", isLarge && "text-2xl 2xl:text-4xl")}>
                             {getTitle(data)}
                         </h1>
@@ -93,7 +93,7 @@ const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
                             </div>
                         ) : null}
                     </Link>
-                    <Link href={`/${isTv ? "tv" : "movies"}/${data?.id}?watch=true`}>
+                    <Link href={`/${isTv ? "tv" : "movies"}/details/${data?.id}?watch=true`}>
                         <Button className={cn("bg-primary/75 px-6 2xl:px-5 2xl:py-8", !isLarge && "rounded-full p-3")}>
                             {isLarge ? (
                                 "Trailer"
