@@ -1,5 +1,8 @@
 "use client"
 
+import { useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useState } from "react"
+
 import {
     Select,
     SelectContent,
@@ -9,19 +12,34 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/ui/select"
-import { MOVIE_GENRES, TV_GENRES } from "@/lib/constants"
-import { MovieOrTv } from "@/typings"
-import { useRouter } from "next/navigation"
 
-export function GenreDropDown({type}:{type: MovieOrTv}) {
+// --lib--
+import { MOVIE_GENRES, TV_GENRES } from "@/lib/constants"
+
+// --types--
+import { MovieOrTv } from "@/typings"
+
+export function GenreDropDown({ type }: { type: MovieOrTv }) {
     const router = useRouter()
+    const genre_param = useSearchParams().get("with_genres")
+
+    const [selectValue, setSelectValue] = useState<string>("")
 
     const genresToShow = type === "movie" ? MOVIE_GENRES : TV_GENRES
 
+    useEffect(() => {
+        // Update the internal state if the URL query param 'with_genres' changes
+        if (genre_param !== selectValue) {
+            setSelectValue(genre_param ?? "")
+        }
+    }, [genre_param])
+
     return (
         <Select
+            value={selectValue}
             onValueChange={(value) => {
-                router.push(`?with_genres=${value}`, {scroll: false})
+                setSelectValue(value)
+                router.push(`?with_genres=${value}`, { scroll: false })
             }}
         >
             <SelectTrigger className="w-full">
