@@ -7,7 +7,7 @@ export default function ErrorFetching() {
     const router = useRouter()
 
     return (
-        <div className="w-full h-[90vh] grid place-items-center">
+        <div className="w-full h-[90vh] grid place-items-center col-span-3">
             <div className=" flex flex-col gap-4 items-center">
                 <div>
                     <h1 className=" text-lg font-semibold text-center">Error fetching data</h1>
