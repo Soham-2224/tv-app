@@ -73,35 +73,19 @@ export async function fetchDiscoverMovies({
     to_date && url.searchParams.set(`${dateParamKey}.lte`, to_date)
     sort_by && url.searchParams.set("sort_by", sort_by)
 
-    console.log(url.toString())
     const data = (await fetchFromTMDB(url)) as SearchResults
 
     return data?.results
 }
 
-export async function getSearchedMovies(term: string) {
-    const url = new URL("https://api.themoviedb.org/3/search/movie")
+export async function fetchSearchedMovies(term: string, type: MovieOrTv) {
+    const url = new URL(`https://api.themoviedb.org/3/search/${type}`)
 
     url.searchParams.set("query", term)
-    url.searchParams.set("include_adult", "false")
-    url.searchParams.set("language", "en-US")
-    url.searchParams.set("page", "1")
 
-    const options: RequestInit = {
-        method: "GET",
-        headers: {
-            accept: "application/json",
-            Authorization: `Bearer ${process.env.TMDB_API_KEY}`
-        },
-        next: {
-            revalidate: 60 * 60 * 24
-        }
-    }
+    const data = (await fetchFromTMDB(url)) as SearchResults
 
-    const response = await fetch(url.toString(), options)
-    const data = await response.json()
-
-    return data.results
+    return data?.results
 }
 
 export async function fetchDetails(type: MovieOrTv, id: string) {
