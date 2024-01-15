@@ -167,6 +167,10 @@ html {
   padding-right: var(--_padding);
 }
 
+.card-grid .embla__slide__img {
+  max-height: 16rem !important;
+}
+
 /* ---circular progress--- */
 
 .percent svg {

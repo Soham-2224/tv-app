@@ -49,7 +49,7 @@ const CarouselCard = ({ isLarge, data, isTv = false, withLikeIcon }: Props) => {
         <div className=" hover:scale-95 overflow-hidden group transition-transform duration-300 relative">
             <Image
                 width={500}
-                height={100}
+                height={300}
                 blurDataURL="https://placehold.co/50x50/EEE/31343C/webp"
                 placeholder="blur"
                 className="embla__slide__img select-none"
