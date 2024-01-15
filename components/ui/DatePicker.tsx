@@ -31,17 +31,23 @@ export function DatePicker({ className, type }: React.HTMLAttributes<HTMLDivElem
     }, [from_date, to_date])
 
     useEffect(() => {
-
         if (!date?.from || !date?.to) return
 
-        let min_date = format(date.from, "yyyy-MM-dd")
-        let max_date = format(date.to, "yyyy-MM-dd")
+        const params = new URLSearchParams()
 
-        let searchParamString = genre
-            ? `?with_genres=${genre}&release_date_gte=${min_date}&release_date_lte=${max_date}`
-            : `?release_date_gte=${min_date}&release_date_lte=${max_date}`
+        // Add genre if it exists
+        if (genre) {
+            params.append("with_genres", genre)
+        }
 
-        router.push(searchParamString)
+        // Format and append the dates
+        params.append("release_date_gte", format(date.from, "yyyy-MM-dd"))
+        params.append("release_date_lte", format(date.to, "yyyy-MM-dd"))
+
+        // Construct the search string
+        const searchString = params.toString()
+
+        router.push(`/${type === "movie" ? "movies" : "tv"}/discover?${searchString}`)
     }, [date?.from, date?.to])
 
     return (
@@ -49,12 +55,10 @@ export function DatePicker({ className, type }: React.HTMLAttributes<HTMLDivElem
             <Popover>
                 <PopoverTrigger asChild>
                     <Button
-                        id="date"
+                        // id="date"
+                        id={`${type}_datepicker`}
                         variant={"outline"}
-                        className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !date && "text-muted-foreground"
-                        )}
+                        className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
                     >
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         {date?.from ? (

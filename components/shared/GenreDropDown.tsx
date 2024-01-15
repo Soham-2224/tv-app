@@ -42,7 +42,7 @@ export function GenreDropDown({ type }: { type: MovieOrTv }) {
                 router.push(`?with_genres=${value}`, { scroll: false })
             }}
         >
-            <SelectTrigger className="w-full">
+            <SelectTrigger id={`${type}_genreDropDown`} className="w-full">
                 <SelectValue placeholder="Select a genre" />
             </SelectTrigger>
             <SelectContent>
