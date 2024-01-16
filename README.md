@@ -1,6 +1,6 @@
 <h1 align="center" id="title">TV App: A Unique Streaming Experience</h1>
 <br>
-<p align="center"><img src="https://socialify.git.ci/Soham-2224/tv-app/image?language=1&amp;name=1&amp;owner=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Soham-2224/tv-app/main/screenshots/tv-app-socialify.webp" alt="project-image"></p>
 
 <p id="description">Welcome to the repository of TV App a distinctive streaming platform designed and developed from the ground up using Next.js 14 and Tailwind CSS. This project isn't your typical Netflix clone; it's a testament to independent development and design showcasing a blend of technical prowess and a keen eye for user experience.</p>
 
